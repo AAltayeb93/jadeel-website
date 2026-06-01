@@ -1,0 +1,40 @@
+---
+import type { Locale } from "../i18n";
+import { path, asset } from "../i18n";
+import { ui } from "../data/site";
+interface Props { locale: Locale; title: string; text: string; }
+const { locale, title, text } = Astro.props;
+const t = ui[locale];
+---
+<section class="cta-band">
+  <div class="container cta-inner reveal">
+    <div class="cta-deco" aria-hidden="true"><img src={asset("/logo/mark-white.png")} alt="" /></div>
+    <div class="cta-copy">
+      <h2>{title}</h2>
+      <p>{text}</p>
+    </div>
+    <div class="btn-row cta-actions">
+      <a class="btn btn--gold" href={path(locale, "contact")}>{t.primaryCta}</a>
+      <a class="btn btn--ghost-light" href={path(locale, "contact")}>{t.bookCta}</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta-band { padding-block: clamp(40px, 6vw, 72px); }
+  .cta-inner {
+    position: relative; overflow: hidden;
+    background: linear-gradient(135deg, var(--green-900), var(--green) 120%);
+    color: #eafaf3; border-radius: var(--r-panel);
+    padding: clamp(32px, 5vw, 56px);
+    display: grid; grid-template-columns: 1fr auto; align-items: center; gap: var(--s6);
+  }
+  .cta-inner h2 { color: #fff; max-width: 22ch; }
+  .cta-inner p { margin-top: var(--s3); color: #cdeadd; max-width: 52ch; }
+  .cta-deco { position: absolute; inset-inline-end: -30px; bottom: -40px; width: 240px; opacity: 0.1; pointer-events: none; }
+  .cta-deco img { width: 100%; }
+  .cta-actions { position: relative; z-index: 2; }
+  @media (max-width: 760px) {
+    .cta-inner { grid-template-columns: 1fr; gap: var(--s5); }
+  }
+</style>

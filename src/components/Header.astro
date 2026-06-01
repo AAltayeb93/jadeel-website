@@ -1,0 +1,143 @@
+---
+import type { Locale, RouteKey } from "../i18n";
+import { path, altLocalePath, dir, asset } from "../i18n";
+import { nav, ui, brand } from "../data/site";
+
+interface Props { locale: Locale; route: RouteKey; }
+const { locale, route } = Astro.props;
+const items = nav[locale];
+const t = ui[locale];
+const altHref = altLocalePath(locale, route);
+const markSrc = asset("/logo/mark-white.png");
+---
+<header class="site-header" data-header>
+  <div class="container header-inner">
+    <a class="brand" href={path(locale, "home")} aria-label={brand.fullName[locale]}>
+      <img src={markSrc} alt="" width="40" height="40" class="brand-mark" />
+      <span class="brand-text">
+        <span class="brand-name">{brand.name[locale]}</span>
+        <span class="brand-tag">{brand.tagline[locale]}</span>
+      </span>
+    </a>
+
+    <nav class="primary-nav" aria-label="Primary">
+      <ul>
+        {items.map((it) => (
+          <li>
+            <a href={path(locale, it.key)} class:list={["nav-link", { active: it.key === route }]}
+               aria-current={it.key === route ? "page" : undefined}>{it.label}</a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <div class="header-actions">
+      <a class="lang-switch" href={altHref} hreflang={locale === "ar" ? "en" : "ar"} aria-label={t.langLabel}>
+        {t.langSwitch}
+      </a>
+      <a class="btn btn--gold header-cta" href={path(locale, "contact")}>{t.primaryCta}</a>
+      <button class="menu-toggle" type="button" aria-label={t.openMenu} aria-expanded="false" data-menu-toggle>
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile drawer -->
+  <div class="mobile-drawer" data-drawer hidden>
+    <nav aria-label="Mobile">
+      <ul>
+        {items.map((it) => (
+          <li><a href={path(locale, it.key)} class:list={["m-link", { active: it.key === route }]}>{it.label}</a></li>
+        ))}
+      </ul>
+      <div class="drawer-actions">
+        <a class="btn btn--gold" href={path(locale, "contact")}>{t.primaryCta}</a>
+        <a class="lang-switch lang-switch--block" href={altHref}>{t.langSwitch}</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky; top: 0; z-index: 50;
+    background: color-mix(in srgb, var(--navy) 96%, transparent);
+    -webkit-backdrop-filter: saturate(160%) blur(8px);
+    backdrop-filter: saturate(160%) blur(8px);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    transition: box-shadow 0.2s ease;
+  }
+  .site-header[data-scrolled] { box-shadow: 0 6px 24px rgba(11,35,66,0.25); }
+  .header-inner { display: flex; align-items: center; gap: var(--s5); height: 72px; }
+
+  .brand { display: inline-flex; align-items: center; gap: 10px; flex-shrink: 0; }
+  .brand-mark { object-fit: contain; }
+  .brand-text { display: flex; flex-direction: column; line-height: 1.1; }
+  .brand-name { font-family: var(--font-display); font-weight: 700; font-size: 1.3rem; color: #fff; }
+  .brand-tag { font-size: 0.7rem; color: var(--gold); letter-spacing: 0.02em; }
+
+  .primary-nav { margin-inline: auto; }
+  .primary-nav ul { display: flex; gap: 2px; align-items: center; }
+  .nav-link {
+    display: inline-block; padding: 8px 12px; border-radius: 6px;
+    color: #cdd8e8; font-size: 0.92rem; font-weight: 500; white-space: nowrap;
+    transition: color 0.15s ease, background 0.15s ease;
+  }
+  .nav-link:hover { color: #fff; background: rgba(255,255,255,0.07); }
+  .nav-link.active { color: #fff; }
+  .nav-link.active::after {
+    content: ""; display: block; height: 2px; margin-top: 5px;
+    background: var(--gold); border-radius: 2px;
+  }
+
+  .header-actions { display: flex; align-items: center; gap: var(--s3); flex-shrink: 0; }
+  .lang-switch {
+    color: #cdd8e8; font-size: 0.85rem; font-weight: 600; padding: 7px 12px;
+    border: 1px solid rgba(255,255,255,0.18); border-radius: var(--r-pill);
+    transition: border-color 0.15s ease, color 0.15s ease;
+  }
+  .lang-switch:hover { color: #fff; border-color: rgba(255,255,255,0.5); }
+  .header-cta { padding: 10px 18px; font-size: 0.9rem; }
+
+  .menu-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: 0; padding: 8px; }
+  .menu-toggle span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; transition: transform 0.2s ease, opacity 0.2s ease; }
+  .site-header[data-open] .menu-toggle span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .site-header[data-open] .menu-toggle span:nth-child(2) { opacity: 0; }
+  .site-header[data-open] .menu-toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .mobile-drawer {
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding: var(--s4) var(--page-x) var(--s6);
+    background: var(--navy);
+  }
+  .mobile-drawer ul { display: flex; flex-direction: column; }
+  .m-link { display: block; padding: 13px 4px; color: #d6e0ee; font-weight: 500; border-bottom: 1px solid rgba(255,255,255,0.07); }
+  .m-link.active { color: var(--gold); }
+  .drawer-actions { display: flex; flex-direction: column; gap: var(--s3); margin-top: var(--s5); }
+  .lang-switch--block { text-align: center; }
+
+  @media (max-width: 1080px) {
+    .primary-nav { display: none; }
+    .header-cta { display: none; }
+    .menu-toggle { display: flex; }
+    .header-actions { margin-inline-start: auto; }
+  }
+  @media (min-width: 1081px) { .mobile-drawer { display: none; } }
+</style>
+
+<script>
+  const header = document.querySelector("[data-header]");
+  const toggle = document.querySelector("[data-menu-toggle]");
+  const drawer = document.querySelector("[data-drawer]");
+  toggle?.addEventListener("click", () => {
+    const open = header?.hasAttribute("data-open");
+    if (open) { header?.removeAttribute("data-open"); drawer?.setAttribute("hidden", ""); toggle?.setAttribute("aria-expanded", "false"); }
+    else { header?.setAttribute("data-open", ""); drawer?.removeAttribute("hidden"); toggle?.setAttribute("aria-expanded", "true"); }
+  });
+  const onScroll = () => {
+    if (window.scrollY > 8) header?.setAttribute("data-scrolled", "");
+    else header?.removeAttribute("data-scrolled");
+  };
+  onScroll();
+  window.addEventListener("scroll", onScroll, { passive: true });
+</script>

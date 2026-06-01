@@ -1,0 +1,178 @@
+{
+  "brand": {
+    "name": {
+      "ar": "جديل",
+      "en": "Jadeel"
+    },
+    "tagline": {
+      "ar": "لحلول الأعمال",
+      "en": "Business Solutions"
+    },
+    "fullName": {
+      "ar": "جديل لحلول الأعمال",
+      "en": "Jadeel Business Solutions"
+    }
+  },
+  "contactInfo": {
+    "email": "hello@jadeel.sa",
+    "phone": "+966 ",
+    "phoneDisplay": {
+      "ar": "يُحدّد لاحقًا",
+      "en": "Coming soon"
+    },
+    "city": {
+      "ar": "المملكة العربية السعودية",
+      "en": "Kingdom of Saudi Arabia"
+    },
+    "social": [
+      {
+        "name": "LinkedIn",
+        "href": "#",
+        "icon": "linkedin"
+      },
+      {
+        "name": "X",
+        "href": "#",
+        "icon": "x"
+      },
+      {
+        "name": "Instagram",
+        "href": "#",
+        "icon": "instagram"
+      },
+      {
+        "name": "WhatsApp",
+        "href": "#",
+        "icon": "whatsapp"
+      }
+    ]
+  },
+  "nav": {
+    "ar": [
+      {
+        "key": "home",
+        "label": "الرئيسية"
+      },
+      {
+        "key": "about",
+        "label": "من نحن"
+      },
+      {
+        "key": "services",
+        "label": "خدماتنا"
+      },
+      {
+        "key": "products",
+        "label": "منتجات جديل"
+      },
+      {
+        "key": "methodology",
+        "label": "منهجيتنا"
+      },
+      {
+        "key": "sectors",
+        "label": "القطاعات"
+      },
+      {
+        "key": "cases",
+        "label": "نماذج تطبيقية"
+      },
+      {
+        "key": "knowledge",
+        "label": "المعرفة"
+      },
+      {
+        "key": "contact",
+        "label": "تواصل معنا"
+      }
+    ],
+    "en": [
+      {
+        "key": "home",
+        "label": "Home"
+      },
+      {
+        "key": "about",
+        "label": "About"
+      },
+      {
+        "key": "services",
+        "label": "Services"
+      },
+      {
+        "key": "products",
+        "label": "Products"
+      },
+      {
+        "key": "methodology",
+        "label": "Methodology"
+      },
+      {
+        "key": "sectors",
+        "label": "Sectors"
+      },
+      {
+        "key": "cases",
+        "label": "Case Models"
+      },
+      {
+        "key": "knowledge",
+        "label": "Knowledge"
+      },
+      {
+        "key": "contact",
+        "label": "Contact"
+      }
+    ]
+  },
+  "ui": {
+    "ar": {
+      "skip": "تخطَّ إلى المحتوى",
+      "openMenu": "افتح القائمة",
+      "closeMenu": "أغلق القائمة",
+      "langSwitch": "English",
+      "langLabel": "اللغة",
+      "primaryCta": "ابدأ تشخيصًا أوليًا",
+      "bookCta": "احجز لقاءً تعريفيًا",
+      "learnMore": "اعرف المزيد",
+      "allRights": "جميع الحقوق محفوظة",
+      "quickLinks": "روابط سريعة",
+      "contactUs": "تواصل معنا",
+      "followUs": "تابعنا",
+      "sitemapTitle": "خريطة الموقع",
+      "readMore": "اقرأ المقال",
+      "forWhom": "لمن يناسب؟",
+      "problem": "ما المشكلة التي يعالجها؟",
+      "outputs": "ما المخرجات؟",
+      "duration": "كم يستغرق؟",
+      "nextStep": "ما الخطوة التالية؟",
+      "backToProducts": "كل المنتجات",
+      "formSent": "تم استلام طلبك، وسنعاود التواصل معك قريبًا.",
+      "requiredHint": "الحقول المعلَّمة بـ * مطلوبة"
+    },
+    "en": {
+      "skip": "Skip to content",
+      "openMenu": "Open menu",
+      "closeMenu": "Close menu",
+      "langSwitch": "العربية",
+      "langLabel": "Language",
+      "primaryCta": "Start an initial diagnostic",
+      "bookCta": "Book an intro session",
+      "learnMore": "Learn more",
+      "allRights": "All rights reserved",
+      "quickLinks": "Quick links",
+      "contactUs": "Contact us",
+      "followUs": "Follow us",
+      "sitemapTitle": "Sitemap",
+      "readMore": "Read article",
+      "forWhom": "Who it's for",
+      "problem": "The problem it solves",
+      "outputs": "What you get",
+      "duration": "Timeframe",
+      "nextStep": "Next step",
+      "backToProducts": "All products",
+      "formSent": "Thank you — we've received your request and will be in touch shortly.",
+      "requiredHint": "Fields marked * are required"
+    }
+  }
+}

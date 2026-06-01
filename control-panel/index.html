@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>لوحة تحكم موقع جديل</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@500;700&family=Readex+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="panel.css" />
+</head>
+<body>
+  <!-- Top bar -->
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">◆</span>
+      <div>
+        <strong>لوحة تحكم موقع جديل</strong>
+        <span class="brand-sub">تحكّم في المحتوى والصور والتصميم</span>
+      </div>
+    </div>
+    <div class="topbar-actions">
+      <span class="status" id="status" data-state="idle">لم يتم ربط المشروع بعد</span>
+      <button class="btn btn-link" id="linkBtn">🔗 ربط مجلد المشروع</button>
+      <button class="btn btn-save" id="saveBtn" disabled>💾 حفظ كل التغييرات</button>
+    </div>
+  </header>
+
+  <!-- Onboarding / not linked -->
+  <section class="onboard" id="onboard">
+    <div class="onboard-card">
+      <h1>مرحبًا 👋</h1>
+      <p>هذه لوحة التحكم الخاصة بموقع <strong>جديل لحلول الأعمال</strong>. منها تستطيع تعديل
+        النصوص (عربي وإنجليزي)، واستبدال الصور والشعار، وتغيير ألوان الهوية — كل ذلك دون أي برمجة.</p>
+      <ol class="steps">
+        <li>اضغط <strong>«ربط مجلد المشروع»</strong> بالأعلى.</li>
+        <li>اختر مجلد <code>jadeel-website</code> ثم اسمح بالتعديل (Edit / Allow).</li>
+        <li>عدّل ما تريد من التبويبات، ثم اضغط <strong>«حفظ كل التغييرات»</strong>.</li>
+      </ol>
+      <p class="hint" id="browserHint"></p>
+      <p style="margin-top:18px"><a href="guide.html" target="_blank" style="color:var(--navy);font-weight:600">📖 افتح دليل الاستخدام الكامل</a></p>
+    </div>
+  </section>
+
+  <!-- Main app (hidden until linked) -->
+  <main class="app" id="app" hidden>
+    <nav class="tabs" role="tablist">
+      <button class="tab active" data-tab="content" role="tab">📝 المحتوى</button>
+      <button class="tab" data-tab="images" role="tab">🖼️ الصور والشعار</button>
+      <button class="tab" data-tab="design" role="tab">🎨 الألوان والتصميم</button>
+      <button class="tab" data-tab="articles" role="tab">📰 المقالات</button>
+    </nav>
+
+    <!-- CONTENT -->
+    <section class="panel active" data-panel="content">
+      <div class="panel-head">
+        <div>
+          <h2>المحتوى</h2>
+          <p>اختر اللغة ثم الصفحة لتعديل نصوصها. التغييرات تُحفظ عند الضغط على «حفظ كل التغييرات».</p>
+        </div>
+        <div class="lang-toggle">
+          <button class="lang active" data-lang="ar">العربية</button>
+          <button class="lang" data-lang="en">English</button>
+        </div>
+      </div>
+      <div class="content-layout">
+        <aside class="page-nav" id="pageNav"></aside>
+        <div class="form-area" id="formArea"></div>
+      </div>
+    </section>
+
+    <!-- IMAGES -->
+    <section class="panel" data-panel="images">
+      <div class="panel-head"><div>
+        <h2>الصور والشعار</h2>
+        <p>استبدل الشعار أو أيقونة المتصفح. يُفضّل استخدام صور PNG بخلفية شفافة وبنفس الأبعاد تقريبًا.
+          الصور تُحفظ مباشرة عند الاستبدال.</p>
+      </div></div>
+      <div class="img-grid" id="imgGrid"></div>
+    </section>
+
+    <!-- DESIGN -->
+    <section class="panel" data-panel="design">
+      <div class="panel-head"><div>
+        <h2>الألوان والتصميم</h2>
+        <p>غيّر ألوان الهوية ودرجة استدارة الحواف. ستظهر المعاينة فورًا في الأسفل، وتُطبّق على
+          الموقع بعد الحفظ.</p>
+      </div></div>
+      <div class="design-layout">
+        <div class="design-controls" id="designControls"></div>
+        <div class="design-preview">
+          <h3>معاينة مباشرة</h3>
+          <div class="preview-box" id="previewBox">
+            <div class="pv-header"><span class="pv-logo">◆ جديل</span>
+              <span class="pv-cta">ابدأ تشخيصًا أوليًا</span></div>
+            <div class="pv-body">
+              <span class="pv-eyebrow">— الاستثمار الاجتماعي</span>
+              <h4>ننسج الفكرة في نموذج أثر مستدام</h4>
+              <p>نموذج نص توضيحي لمعاينة الألوان على الموقع.</p>
+              <div class="pv-card">
+                <span class="pv-ic">◆</span>
+                <strong>بطاقة خدمة</strong>
+                <small>وصف مختصر للبطاقة داخل الموقع.</small>
+              </div>
+            </div>
+          </div>
+          <button class="btn btn-reset" id="resetTheme">↩︎ استعادة الألوان الأصلية</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ARTICLES -->
+    <section class="panel" data-panel="articles">
+      <div class="panel-head"><div>
+        <h2>المقالات (صفحة المعرفة)</h2>
+        <p>أضف مقالًا جديدًا أو عدّل مقالًا قائمًا. كل مقال يُحفظ كملف مستقل.</p>
+      </div>
+      <button class="btn btn-add" id="newArticleBtn">＋ مقال جديد</button>
+      </div>
+      <div class="articles-layout">
+        <aside class="article-list" id="articleList"></aside>
+        <div class="article-form" id="articleForm">
+          <p class="empty">اختر مقالًا من القائمة أو أضف مقالًا جديدًا.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" hidden></div>
+  <script src="panel.js"></script>
+</body>
+</html>

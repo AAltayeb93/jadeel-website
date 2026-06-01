@@ -1,0 +1,92 @@
+---
+import type { Locale } from "../i18n";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/PageHero.astro";
+import CTABand from "../components/CTABand.astro";
+import FeatureCard from "../components/FeatureCard.astro";
+import Icon from "../components/Icon.astro";
+import { content } from "../data/content";
+
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+const c = content[locale];
+const m = c.methodology;
+---
+<BaseLayout locale={locale} route="methodology" title={c.meta.methodology.title} description={c.meta.methodology.desc}>
+  <PageHero eyebrow={m.hero.eyebrow} title={m.hero.title} lead={m.hero.lead} />
+
+  <!-- Phases timeline -->
+  <section class="section">
+    <div class="container">
+      <ol class="phases">
+        {m.phases.map((ph) => (
+          <li class="phase reveal">
+            <div class="phase-marker">
+              <span class="phase-icon"><Icon name={ph.icon} /></span>
+              <span class="phase-line" aria-hidden="true"></span>
+            </div>
+            <div class="phase-body">
+              <span class="phase-n">{ph.n}</span>
+              <h3>{ph.title}</h3>
+              <p>{ph.text}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- Distinct -->
+  <section class="section section--soft">
+    <div class="container">
+      <div class="section-head center">
+        <span class="eyebrow">{m.distinct.eyebrow}</span>
+        <h2>{m.distinct.title}</h2>
+      </div>
+      <div class="grid grid-4">
+        {m.distinct.points.map((p) => (
+          <FeatureCard icon={p.icon} title={p.title} text={p.text} variant="green" />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Outputs -->
+  <section class="section">
+    <div class="container outputs-grid">
+      <div class="section-head reveal outputs-head">
+        <span class="eyebrow">{m.outputs.eyebrow}</span>
+        <h2>{m.outputs.title}</h2>
+      </div>
+      <ul class="outputs-list reveal">
+        {m.outputs.items.map((o) => (
+          <li><span class="card-icon out-ic"><Icon name="check" size={18} /></span><span>{o}</span></li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <CTABand locale={locale} title={c.home.finalCta.title} text={c.home.finalCta.text} />
+</BaseLayout>
+
+<style>
+  .phases { display: flex; flex-direction: column; gap: 0; max-width: 820px; margin-inline: auto; }
+  .phase { display: grid; grid-template-columns: 64px 1fr; gap: var(--s5); }
+  .phase-marker { display: flex; flex-direction: column; align-items: center; }
+  .phase-icon { display: inline-flex; align-items: center; justify-content: center; width: 56px; height: 56px; border-radius: 50%; background: var(--navy); color: #fff; flex-shrink: 0; z-index: 2; }
+  .phase-line { flex: 1; width: 2px; background: var(--cloud); margin-block: 6px; }
+  .phase:last-child .phase-line { display: none; }
+  .phase-body { padding-bottom: var(--s7); }
+  .phase:last-child .phase-body { padding-bottom: 0; }
+  .phase-n { font-family: var(--font-display); font-weight: 700; color: var(--gold); font-size: 0.95rem; }
+  .phase-body h3 { font-size: 1.35rem; margin-block: 2px 8px; }
+  .phase-body p { color: var(--text-muted); }
+
+  .outputs-grid { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: var(--s8); align-items: start; }
+  .outputs-head { margin-bottom: 0; }
+  .outputs-list { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s4); }
+  .outputs-list li { display: flex; gap: var(--s4); align-items: center; background: var(--white); border: 1px solid var(--border); border-radius: var(--r-card); padding: var(--s4) var(--s5); box-shadow: var(--shadow-sm); font-weight: 500; color: var(--navy); }
+  .out-ic { margin-bottom: 0; width: 42px; height: 42px; flex-shrink: 0; background: var(--green-050); color: var(--green-700); }
+  @media (max-width: 860px) { .outputs-grid { grid-template-columns: 1fr; gap: var(--s6); } }
+  @media (max-width: 560px) { .outputs-list { grid-template-columns: 1fr; } }
+</style>

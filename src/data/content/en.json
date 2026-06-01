@@ -1,0 +1,660 @@
+{
+  "meta": {
+    "home": {
+      "title": "Jadeel Business Solutions — Sustainability & Impact Models",
+      "desc": "We build sustainability and impact models for the non-profit sector and social ventures — from idea to an operable, measurable model."
+    },
+    "about": {
+      "title": "About — Jadeel Business Solutions",
+      "desc": "A consulting and business-solutions firm specialized in building sustainability and impact models for the non-profit sector and social ventures."
+    },
+    "services": {
+      "title": "Services — Jadeel",
+      "desc": "Five service families that move an initiative from idea to an operating, revenue, partnership and measurable-impact model."
+    },
+    "products": {
+      "title": "Jadeel Products",
+      "desc": "Clear-output consulting products designed for the non-profit and social-venture environment."
+    },
+    "methodology": {
+      "title": "Methodology — Jadeel",
+      "desc": "A five-stage practical path: understand, diagnose, build, present & test, measure & improve."
+    },
+    "sectors": {
+      "title": "Sectors We Serve — Jadeel",
+      "desc": "We work with associations, donor foundations, companies, initiatives and government bodies across many social domains."
+    },
+    "cases": {
+      "title": "Case Models — Jadeel",
+      "desc": "Examples that show how Jadeel builds sustainability and impact models from an initiative's inner structure."
+    },
+    "knowledge": {
+      "title": "Knowledge & Articles — Jadeel",
+      "desc": "Practical insights on sustainability, impact, sponsorship and social products for the non-profit sector."
+    },
+    "contact": {
+      "title": "Contact — Jadeel",
+      "desc": "Start an initial diagnostic, request a service proposal, or book an intro session with the Jadeel team."
+    }
+  },
+  "home": {
+    "hero": {
+      "eyebrow": "Social Investment · Community Responsibility",
+      "title": "We weave the idea, the resources and the partners into a sustainable impact model",
+      "lead": "Jadeel Business Solutions is a firm specialized in building sustainability and impact models for non-profit organizations and social ventures, helping associations and initiatives turn programs into operating, partnership, revenue and measurable-impact models.",
+      "stats": [
+        {
+          "n": "5",
+          "label": "core service families"
+        },
+        {
+          "n": "7",
+          "label": "ready-to-order products"
+        },
+        {
+          "n": "90",
+          "label": "days to a first pilot"
+        }
+      ]
+    },
+    "why": {
+      "eyebrow": "Why Jadeel?",
+      "title": "Strong assets waiting for a clear model",
+      "text": "Many associations hold useful programs, field experience and community trust — but they need to turn those assets into sustainability and impact models that are executable, fundable and measurable.",
+      "points": [
+        {
+          "icon": "link",
+          "title": "We link impact to sustainability",
+          "text": "We never separate the social mission from the model that keeps it alive and growing."
+        },
+        {
+          "icon": "blocks",
+          "title": "We build practical models",
+          "text": "Executable outputs, not theory papers detached from delivery."
+        },
+        {
+          "icon": "compass",
+          "title": "We understand the sector",
+          "text": "Client, beneficiary, funder and partner may all be different parties in one project."
+        }
+      ]
+    },
+    "services": {
+      "eyebrow": "Core services",
+      "title": "Four services that move you from idea to impact",
+      "items": [
+        {
+          "icon": "diagnose",
+          "title": "Sustainability & impact diagnostic",
+          "text": "We read the organization's state and surface the gaps, opportunities and priorities worth developing."
+        },
+        {
+          "icon": "model",
+          "title": "Return & impact model building",
+          "text": "We design income sources that fit the organization's nature and mission, tied to impact."
+        },
+        {
+          "icon": "handshake",
+          "title": "Sponsorship & partnership packages",
+          "text": "Professional sponsorship offers that connect support to impact and outputs."
+        },
+        {
+          "icon": "report",
+          "title": "Impact & need reporting",
+          "text": "Indicators, dashboards and executive reports fit for management, donors and partners."
+        }
+      ]
+    },
+    "products": {
+      "eyebrow": "Jadeel products",
+      "title": "Clear products, not generic consulting",
+      "text": "We start from a product with defined outputs, then expand the work as the project matures."
+    },
+    "methodology": {
+      "eyebrow": "Methodology",
+      "title": "A practical path from need to decision",
+      "steps": [
+        {
+          "icon": "search",
+          "n": "01",
+          "title": "Understand",
+          "text": "We understand the need, the programs and the available data."
+        },
+        {
+          "icon": "diagnose",
+          "n": "02",
+          "title": "Diagnose",
+          "text": "We surface gaps, opportunities and sustainability potential."
+        },
+        {
+          "icon": "blocks",
+          "n": "03",
+          "title": "Build",
+          "text": "We build the operating and financial model and impact indicators."
+        },
+        {
+          "icon": "trending",
+          "n": "04",
+          "title": "Measure",
+          "text": "We measure results and turn them into reports and decisions."
+        }
+      ]
+    },
+    "audience": {
+      "eyebrow": "Who we serve",
+      "title": "Partners who pair the will for impact with the need for a model",
+      "items": [
+        {
+          "icon": "users",
+          "title": "Non-profit associations",
+          "text": "to develop programs and initiatives."
+        },
+        {
+          "icon": "landmark",
+          "title": "Donor foundations",
+          "text": "for measurable initiatives."
+        },
+        {
+          "icon": "rocket",
+          "title": "Social ventures",
+          "text": "to build a clear business model."
+        },
+        {
+          "icon": "building",
+          "title": "Sponsoring companies",
+          "text": "for impactful CSR opportunities."
+        },
+        {
+          "icon": "seedling",
+          "title": "Emerging initiatives",
+          "text": "to move from idea to execution."
+        },
+        {
+          "icon": "shield",
+          "title": "Government & semi-government",
+          "text": "for disciplined impact models."
+        }
+      ]
+    },
+    "caseFeature": {
+      "eyebrow": "Case model",
+      "title": "The Return & Impact Portfolio",
+      "text": "We help associations build social-sustainability arms — a studies-and-consulting unit, a social store, a gifting platform, or sellable knowledge products — that combine return with impact.",
+      "cta": "Explore case models"
+    },
+    "finalCta": {
+      "title": "Want to know the sustainability and impact opportunities inside your association?",
+      "text": "Start with an initial diagnostic that helps you read existing programs and discover the opportunities most ready for development, sponsorship and measurement."
+    }
+  },
+  "about": {
+    "hero": {
+      "eyebrow": "About us",
+      "title": "We turn social expertise into sustainability and impact models",
+      "lead": "Jadeel Business Solutions is a consulting and business-solutions firm specialized in building sustainability and impact models for the non-profit sector and social ventures — turning ideas and initiatives into clear operating models, scalable revenue paths, organized partnerships and measurable impact indicators."
+    },
+    "vmv": [
+      {
+        "icon": "eye",
+        "title": "Our vision",
+        "text": "For Jadeel to be a practical partner in turning social initiatives into sustainable models with measurable impact."
+      },
+      {
+        "icon": "target",
+        "title": "Our mission",
+        "text": "We help associations, non-profits and social ventures build operating, revenue, partnership and impact models that preserve the mission and strengthen sustainability."
+      },
+      {
+        "icon": "braid",
+        "title": "The name",
+        "text": "Jadeel means braid — to bind and weave in an organized way. We weave the idea, the resources, the partners, the beneficiaries, the operating model, the return and the impact into one coherent model."
+      }
+    ],
+    "positioning": {
+      "eyebrow": "Our positioning",
+      "title": "In the precise space between consulting and execution",
+      "text": "We don't stop at producing documents, we don't start from tech solutions before understanding the model, and we never let marketing substitute clarity of return and impact. We are a practical development partner combining consulting thinking, business-model building, sustainability design, operational discipline and impact measurement.",
+      "questions": [
+        "How does an initiative become an executable project?",
+        "How are sustainability sources built to fit the organization's nature?",
+        "How can social impact be linked to legitimate return?",
+        "How is the initiative presented convincingly to partners and sponsors?",
+        "How is impact measured and presented clearly and credibly?"
+      ]
+    },
+    "notUs": {
+      "eyebrow": "What we are not",
+      "title": "So the role stays clear",
+      "items": [
+        "We are not a charity.",
+        "We are not only a marketing agency.",
+        "We are not only a technology company.",
+        "We are not a theory-report office.",
+        "We are a practical development partner that builds executable models."
+      ]
+    },
+    "promise": {
+      "eyebrow": "Our professional promise",
+      "title": "Clear outputs, tied to a real problem",
+      "text": "We commit that our outputs are clear, usable and built on a defined scope — so the client knows what they will receive, what is out of scope, and the next step after delivery. We don't sell vague promises, inflate results, or claim impact that can't be measured."
+    }
+  },
+  "services": {
+    "hero": {
+      "eyebrow": "Services",
+      "title": "Five practical, hands-on service families",
+      "lead": "Jadeel's services are designed to be executable in the non-profit and social-venture environment, moving an initiative from idea to an operating, revenue, partnership and measurable-impact model."
+    },
+    "families": [
+      {
+        "icon": "diagnose",
+        "title": "Diagnostic services",
+        "items": [
+          "Jadeel sustainability & impact diagnostic",
+          "Initiative sponsorship readiness",
+          "Donor readiness report",
+          "Social priorities compass"
+        ]
+      },
+      {
+        "icon": "model",
+        "title": "Sustainability & return services",
+        "items": [
+          "Sustainability model building",
+          "Social investment arm design",
+          "Return & impact portfolio",
+          "Social investment feasibility"
+        ]
+      },
+      {
+        "icon": "handshake",
+        "title": "Sponsorship & partnership services",
+        "items": [
+          "Smart Sponsor package",
+          "Partnerships & sponsorship portfolio",
+          "Sponsor journey design",
+          "Partner report"
+        ]
+      },
+      {
+        "icon": "report",
+        "title": "Impact & measurement services",
+        "items": [
+          "Impact, told",
+          "Executive impact dashboard",
+          "Empowerment index",
+          "Rapid impact measurement",
+          "Disciplined impact story"
+        ]
+      },
+      {
+        "icon": "flask",
+        "title": "Social innovation services",
+        "items": [
+          "Initiative lab",
+          "Social products lab",
+          "Sponsorship-ready initiatives bank",
+          "Initiative operating playbook"
+        ]
+      }
+    ]
+  },
+  "products": {
+    "hero": {
+      "eyebrow": "Jadeel products",
+      "title": "Defined-output products, not generic consulting",
+      "lead": "Every product follows one structure: who it's for, the problem it solves, the outputs, the timeframe, and the next step after it."
+    },
+    "list": [
+      {
+        "slug": "sustainability-impact-print",
+        "icon": "fingerprint",
+        "featured": true,
+        "name": "Sustainability & Impact Print",
+        "summary": "An executive diagnostic that reveals sustainability and impact opportunities inside the association.",
+        "forWhom": "Associations and initiatives that want to know their current position on sustainability and impact.",
+        "problem": "No clear picture of the gaps and opportunities convertible into projects, partnerships or revenue sources.",
+        "outputs": [
+          "Executive diagnostic report",
+          "Gaps & priorities map",
+          "Studiable sustainability opportunities",
+          "Preliminary impact indicators",
+          "A clear recommendation for the next step"
+        ],
+        "duration": "≈ 2 to 4 weeks.",
+        "nextStep": "Build the sustainability model or sponsorship package by priority."
+      },
+      {
+        "slug": "support-readiness",
+        "icon": "shield-check",
+        "name": "Support & Sponsorship Readiness",
+        "summary": "A professional test of how ready an initiative is to be presented to supporters and sponsors.",
+        "forWhom": "Initiatives preparing to approach sponsors or donors.",
+        "problem": "Approaching supporters before readiness is complete weakens the odds of acceptance.",
+        "outputs": [
+          "Sponsorship readiness card",
+          "List of missing elements",
+          "Pre-pitch preparation recommendations"
+        ],
+        "duration": "1 to 2 weeks.",
+        "nextStep": "Prepare the Smart Sponsor package."
+      },
+      {
+        "slug": "impact-told",
+        "icon": "feather",
+        "name": "Impact, Told",
+        "summary": "A concise impact report that turns numbers into a convincing story for partners.",
+        "forWhom": "Associations that have results but can't yet tell them convincingly.",
+        "problem": "Numbers alone don't convince partners and sponsors without a disciplined narrative.",
+        "outputs": [
+          "A disciplined impact story",
+          "Executive impact summary",
+          "Visual elements for presentation"
+        ],
+        "duration": "2 to 3 weeks.",
+        "nextStep": "An executive impact dashboard for ongoing tracking."
+      },
+      {
+        "slug": "need-pulse",
+        "icon": "pulse",
+        "name": "Need Pulse",
+        "summary": "A social report that helps supporters understand the need before intervening.",
+        "forWhom": "Donor foundations and bodies wanting evidence-based intervention.",
+        "problem": "Intervening without a precise read of the need wastes resources and weakens impact.",
+        "outputs": [
+          "A concise need read",
+          "Proposed intervention priorities",
+          "Preliminary tracking indicators"
+        ],
+        "duration": "3 to 5 weeks.",
+        "nextStep": "Design an initiative via the Initiative Lab."
+      },
+      {
+        "slug": "smart-sponsor",
+        "icon": "gift",
+        "featured": true,
+        "name": "Smart Sponsor Package",
+        "summary": "A professional sponsorship file that makes the initiative presentable and fundable.",
+        "forWhom": "Associations and initiatives seeking sponsors and partners.",
+        "problem": "No sponsorship file that links support to impact in a language sponsors understand.",
+        "outputs": [
+          "Tiered sponsorship packages",
+          "Value proposition per tier",
+          "Impact indicators",
+          "Pitch messaging"
+        ],
+        "duration": "2 to 4 weeks.",
+        "nextStep": "Design the sponsor journey and partner report."
+      },
+      {
+        "slug": "initiative-lab",
+        "icon": "flask",
+        "name": "Initiative Lab",
+        "summary": "A practical path that turns an idea into an executable, measurable initiative.",
+        "forWhom": "Idea owners and emerging initiatives.",
+        "problem": "A good idea stays unclear in its operation, return and impact.",
+        "outputs": [
+          "A complete initiative card",
+          "Initial operating model",
+          "Impact indicators",
+          "A 90-day pilot plan"
+        ],
+        "duration": "4 to 6 weeks.",
+        "nextStep": "Build the sustainability model or investment arm."
+      },
+      {
+        "slug": "return-impact-portfolio",
+        "icon": "briefcase",
+        "name": "Return & Impact Portfolio",
+        "summary": "Design of social-investment arms and initiatives that generate return and produce impact.",
+        "forWhom": "Associations that want to build long-term sustainability streams.",
+        "problem": "Heavy reliance on donations without sustainable return arms.",
+        "outputs": [
+          "A portfolio of social-investment arms",
+          "Return & impact model per arm",
+          "Execution priority sequence"
+        ],
+        "duration": "6 to 10 weeks.",
+        "nextStep": "Run one priority as a measurable pilot."
+      }
+    ]
+  },
+  "methodology": {
+    "hero": {
+      "eyebrow": "Methodology",
+      "title": "We start by understanding the problem — not by writing the report",
+      "lead": "We work along a clear five-stage path that links need to decision and turns diagnosis into an operable, measurable model."
+    },
+    "phases": [
+      {
+        "icon": "search",
+        "n": "01",
+        "title": "Understand",
+        "text": "We read the association or initiative — its target group, programs, partners and available data."
+      },
+      {
+        "icon": "diagnose",
+        "n": "02",
+        "title": "Diagnose",
+        "text": "We define gaps, order the programs, surface sustainability opportunities, and separate the apparent, the inferred and the unavailable."
+      },
+      {
+        "icon": "blocks",
+        "n": "03",
+        "title": "Build",
+        "text": "We build the sustainability model, sponsorship package, impact indicators, initiative card or investment arm."
+      },
+      {
+        "icon": "presentation",
+        "n": "04",
+        "title": "Present & test",
+        "text": "We turn the output into a file ready for management, sponsor or partner — and propose a 90-day pilot."
+      },
+      {
+        "icon": "trending",
+        "n": "05",
+        "title": "Measure & improve",
+        "text": "We measure results, review return and impact, and recommend scaling or adjustment."
+      }
+    ],
+    "distinct": {
+      "eyebrow": "What makes Jadeel's method distinct?",
+      "title": "We start from the inner structure, not the outer shape",
+      "points": [
+        {
+          "icon": "layers",
+          "title": "Resource & operation",
+          "text": "We read resource, operation and return before form."
+        },
+        {
+          "icon": "link",
+          "title": "Impact tied to return",
+          "text": "We connect the social mission to the model of survival and growth."
+        },
+        {
+          "icon": "ruler",
+          "title": "A defined scope",
+          "text": "A clear scope where the client knows what's in and what's out."
+        },
+        {
+          "icon": "gauge",
+          "title": "Measurability",
+          "text": "We don't offer impact that can't be measured."
+        }
+      ]
+    },
+    "outputs": {
+      "eyebrow": "Methodology outputs",
+      "title": "What the client walks away with",
+      "items": [
+        "Executive diagnostic report",
+        "Gaps & priorities map",
+        "Practical sustainability model",
+        "Sponsorship or partnership package",
+        "Impact indicators & dashboards",
+        "A clear next-stage recommendation"
+      ]
+    }
+  },
+  "sectors": {
+    "hero": {
+      "eyebrow": "Sectors we serve",
+      "title": "We work with many bodies across broad social domains",
+      "lead": "The bodies Jadeel works with are diverse, and so are the social domains in which we build sustainability and impact models."
+    },
+    "entities": {
+      "eyebrow": "The bodies",
+      "title": "Who we work with",
+      "items": [
+        {
+          "icon": "users",
+          "title": "Non-profit associations",
+          "text": "Developing programs and building sustainability streams."
+        },
+        {
+          "icon": "landmark",
+          "title": "Donor foundations",
+          "text": "Measurable, trackable initiatives."
+        },
+        {
+          "icon": "building",
+          "title": "CSR-driven companies",
+          "text": "Impactful social-responsibility opportunities."
+        },
+        {
+          "icon": "seedling",
+          "title": "Emerging social initiatives",
+          "text": "Building a business model from the idea."
+        },
+        {
+          "icon": "layout",
+          "title": "Social platforms & projects",
+          "text": "Scalable operating and return models."
+        },
+        {
+          "icon": "microscope",
+          "title": "Research & social centers",
+          "text": "Turning knowledge into products and services."
+        },
+        {
+          "icon": "shield",
+          "title": "Government & semi-government",
+          "text": "Disciplined, presentable impact models."
+        }
+      ]
+    },
+    "domains": {
+      "eyebrow": "Example domains",
+      "title": "Social domains where we build models",
+      "items": [
+        "Family & childhood",
+        "Disability",
+        "Health",
+        "Education",
+        "Economic empowerment",
+        "Culture",
+        "Hajj & Umrah",
+        "Environment & agriculture",
+        "Transport & community services"
+      ]
+    }
+  },
+  "cases": {
+    "hero": {
+      "eyebrow": "Case models",
+      "title": "What Jadeel's models look like in practice",
+      "lead": "We present models that show how Jadeel works — without claiming they are all fully executed projects. The value is in the model's structure: resource, operation, return, partnership and impact."
+    },
+    "list": [
+      {
+        "icon": "gift",
+        "title": "Joy Renewed (Farha Min Jadeed)",
+        "text": "A social-investment store and platform for new, gifted and partner-listed toys, turned into a financial stream and family impact. Jadeel's value shows in shaping the idea, designing the donation–sorting–refurbishment–sale paths, the partnership model, impact indicators and the executive pitch.",
+        "tags": [
+          "Social store",
+          "Refurbishment",
+          "Family impact"
+        ]
+      },
+      {
+        "icon": "microscope",
+        "title": "Studies & Social Consulting Unit",
+        "text": "A unit inside a specialized association, technically operated by Jadeel, turning field experience into knowledge products and paid services that support the association's sustainability.",
+        "tags": [
+          "Knowledge products",
+          "Paid services",
+          "Technical operation"
+        ]
+      },
+      {
+        "icon": "briefcase",
+        "title": "Return & Impact Portfolio",
+        "text": "Design of a set of social-investment arms for associations, combining knowledge, products, sponsorship, sales and impact measurement within a portfolio balanced between return and mission.",
+        "tags": [
+          "Investment arms",
+          "Diversified return",
+          "Impact measurement"
+        ]
+      }
+    ]
+  },
+  "knowledge": {
+    "hero": {
+      "eyebrow": "Knowledge & articles",
+      "title": "Practical insights that build decision clarity",
+      "lead": "We share what we learn from working with the non-profit sector: how sustainability is built without losing the mission, when an initiative is sponsorship-ready, and how activity turns into impact."
+    }
+  },
+  "contact": {
+    "hero": {
+      "eyebrow": "Contact us",
+      "title": "Let's design sustainable impact together",
+      "lead": "Start with an initial diagnostic, request a service proposal, or book an intro session. Choose your request type, send us a few details, and we'll get back to you."
+    },
+    "channels": [
+      {
+        "icon": "mail",
+        "title": "Email",
+        "value": "hello@jadeel.sa"
+      },
+      {
+        "icon": "phone",
+        "title": "Phone",
+        "value": "Coming soon"
+      },
+      {
+        "icon": "pin",
+        "title": "Location",
+        "value": "Kingdom of Saudi Arabia"
+      }
+    ],
+    "requestTypes": [
+      "Initial diagnostic request",
+      "Service proposal request",
+      "Intro meeting request",
+      "Initiative-building request",
+      "Sponsorship package request",
+      "Impact report request"
+    ],
+    "entityTypes": [
+      "Non-profit association",
+      "Donor foundation",
+      "Social venture",
+      "Sponsoring company",
+      "Emerging initiative",
+      "Government / semi-government",
+      "Other"
+    ],
+    "form": {
+      "name": "Organization name",
+      "contactName": "Contact person",
+      "entityType": "Organization type",
+      "field": "Field / domain",
+      "service": "Requested service",
+      "website": "Website (if any)",
+      "email": "Email",
+      "message": "Short message",
+      "submit": "Send request"
+    }
+  }
+}

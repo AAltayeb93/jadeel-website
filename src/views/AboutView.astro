@@ -1,0 +1,98 @@
+---
+import type { Locale } from "../i18n";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/PageHero.astro";
+import CTABand from "../components/CTABand.astro";
+import Icon from "../components/Icon.astro";
+import { content } from "../data/content";
+
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+const c = content[locale];
+const a = c.about;
+---
+<BaseLayout locale={locale} route="about" title={c.meta.about.title} description={c.meta.about.desc}>
+  <PageHero eyebrow={a.hero.eyebrow} title={a.hero.title} lead={a.hero.lead} />
+
+  <!-- Vision / Mission / Name -->
+  <section class="section">
+    <div class="container">
+      <div class="grid grid-3">
+        {a.vmv.map((v) => (
+          <div class="card vmv-card reveal">
+            <span class="card-icon"><Icon name={v.icon} /></span>
+            <h3>{v.title}</h3>
+            <p>{v.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Positioning -->
+  <section class="section section--soft">
+    <div class="container pos-grid">
+      <div class="section-head pos-head reveal">
+        <span class="eyebrow">{a.positioning.eyebrow}</span>
+        <h2>{a.positioning.title}</h2>
+        <p>{a.positioning.text}</p>
+      </div>
+      <ul class="pos-questions reveal">
+        {a.positioning.questions.map((q) => (
+          <li><span class="diamond"></span><span>{q}</span></li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- What we are not + Promise -->
+  <section class="section">
+    <div class="container notus-grid">
+      <div class="reveal">
+        <span class="eyebrow">{a.notUs.eyebrow}</span>
+        <h2>{a.notUs.title}</h2>
+        <ul class="notus-list">
+          {a.notUs.items.map((item, i) => (
+            <li class:list={{ "is-positive": i === a.notUs.items.length - 1 }}>
+              <Icon name={i === a.notUs.items.length - 1 ? "check" : "close"} size={18} />
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div class="promise-card reveal">
+        <span class="eyebrow">{a.promise.eyebrow}</span>
+        <h2>{a.promise.title}</h2>
+        <p>{a.promise.text}</p>
+        <div class="rule-ornament promise-rule"><span class="diamond"></span></div>
+      </div>
+    </div>
+  </section>
+
+  <CTABand locale={locale} title={c.home.finalCta.title} text={c.home.finalCta.text} />
+</BaseLayout>
+
+<style>
+  .vmv-card .card-icon { background: var(--gold-050); color: var(--gold-600); }
+  .vmv-card h3 { font-size: 1.3rem; }
+
+  .pos-grid { display: grid; grid-template-columns: 1fr 0.85fr; gap: var(--s8); align-items: start; }
+  .pos-head { margin-bottom: 0; }
+  .pos-questions { display: flex; flex-direction: column; gap: var(--s4); background: var(--white); border: 1px solid var(--border); border-radius: var(--r-panel); padding: var(--s6); box-shadow: var(--shadow-sm); }
+  .pos-questions li { display: flex; gap: var(--s3); align-items: flex-start; font-weight: 500; color: var(--navy); }
+  .pos-questions .diamond { margin-top: 9px; flex-shrink: 0; }
+  @media (max-width: 860px) { .pos-grid { grid-template-columns: 1fr; gap: var(--s6); } }
+
+  .notus-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s8); align-items: start; }
+  .notus-list { margin-top: var(--s5); display: flex; flex-direction: column; gap: var(--s3); }
+  .notus-list li { display: flex; gap: var(--s3); align-items: center; font-size: 1.05rem; color: var(--text); }
+  .notus-list :global(svg) { color: var(--mist); flex-shrink: 0; }
+  .notus-list .is-positive { color: var(--navy); font-weight: 600; }
+  .notus-list .is-positive :global(svg) { color: var(--green); }
+  .promise-card { background: var(--navy); color: #dbe6f5; border-radius: var(--r-panel); padding: clamp(28px, 4vw, 44px); }
+  .promise-card .eyebrow { color: var(--gold); }
+  .promise-card h2 { color: #fff; margin-top: var(--s3); }
+  .promise-card p { margin-top: var(--s4); color: #c2cee0; }
+  .promise-rule { justify-content: flex-start; margin-top: var(--s5); color: var(--gold); }
+  @media (max-width: 860px) { .notus-grid { grid-template-columns: 1fr; gap: var(--s6); } }
+</style>

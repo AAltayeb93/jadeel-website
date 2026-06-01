@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>دليل استخدام لوحة تحكم موقع جديل</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@600;700&family=Readex+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{--navy:#11335e;--green:#2c7a5b;--gold:#be8c3a;--ink:#18202b;--slate:#5b6573;--cloud:#e6eaf0;--paper:#f5f7fa}
+  *{box-sizing:border-box;margin:0}
+  body{font-family:"Readex Pro",system-ui,sans-serif;line-height:2;color:var(--ink);background:var(--paper)}
+  .wrap{max-width:820px;margin:0 auto;background:#fff;padding:56px 64px;box-shadow:0 10px 40px rgba(17,51,94,.08)}
+  h1,h2,h3{font-family:"El Messiri",sans-serif;color:var(--navy);line-height:1.4}
+  h1{font-size:2.1rem}
+  .sub{color:var(--slate);margin-top:6px}
+  .rule{height:3px;width:70px;background:var(--gold);border-radius:3px;margin:18px 0 30px}
+  h2{font-size:1.5rem;margin:38px 0 12px;padding-top:18px;border-top:1px solid var(--cloud);display:flex;align-items:center;gap:10px}
+  h2 .num{background:var(--navy);color:#fff;width:34px;height:34px;border-radius:9px;display:inline-flex;align-items:center;justify-content:center;font-size:1rem}
+  h3{font-size:1.15rem;margin:22px 0 6px;color:var(--green)}
+  p,li{color:#26303d}
+  ol,ul{margin:8px 28px}
+  li{margin-bottom:6px}
+  code{background:var(--cloud);padding:2px 8px;border-radius:6px;font-size:.92em;direction:ltr;display:inline-block}
+  .box{background:var(--paper);border:1px solid var(--cloud);border-inline-start:4px solid var(--gold);border-radius:10px;padding:16px 20px;margin:18px 0}
+  .box.note{border-inline-start-color:var(--green)}
+  .box.warn{border-inline-start-color:#c0392b;background:#fdf4f3}
+  .box strong{color:var(--navy)}
+  .tag{display:inline-block;background:var(--gold);color:#1b1b1b;border-radius:999px;padding:3px 12px;font-size:.8rem;font-weight:700}
+  kbd{background:var(--navy);color:#fff;border-radius:6px;padding:2px 9px;font-size:.85em}
+  table{width:100%;border-collapse:collapse;margin:14px 0}
+  th,td{border:1px solid var(--cloud);padding:10px 12px;text-align:start;font-size:.95rem}
+  th{background:var(--navy);color:#fff;font-weight:600}
+  .toc{background:var(--navy);color:#e7eefa;border-radius:14px;padding:22px 26px;margin-bottom:10px}
+  .toc h3{color:#fff;margin:0 0 10px}
+  .toc a{color:#cfe0d8;text-decoration:none;display:block;padding:3px 0}
+  .toc a:hover{color:var(--gold)}
+  .foot{margin-top:40px;padding-top:18px;border-top:1px solid var(--cloud);color:var(--slate);font-size:.88rem;text-align:center}
+  @media print{body{background:#fff}.wrap{box-shadow:none;max-width:none;padding:0}.toc{display:none}}
+  @media(max-width:640px){.wrap{padding:30px 22px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <span class="tag">دليل الاستخدام</span>
+  <h1>لوحة تحكم موقع جديل</h1>
+  <p class="sub">كيف تعدّل محتوى الموقع وصوره وألوانه بنفسك — دون أي خبرة برمجية.</p>
+  <div class="rule"></div>
+
+  <div class="toc">
+    <h3>المحتويات</h3>
+    <a href="#start">١. كيف تفتح لوحة التحكم</a>
+    <a href="#link">٢. ربط المشروع</a>
+    <a href="#content">٣. تعديل النصوص (عربي وإنجليزي)</a>
+    <a href="#images">٤. تغيير الصور والشعار</a>
+    <a href="#design">٥. تغيير الألوان والتصميم</a>
+    <a href="#articles">٦. إدارة المقالات</a>
+    <a href="#publish">٧. معاينة التغييرات ونشرها</a>
+    <a href="#faq">٨. أسئلة شائعة</a>
+  </div>
+
+  <div class="box note">
+    <strong>الفكرة باختصار:</strong> الموقع مبني بطريقة تفصل «المحتوى» عن «التصميم».
+    لوحة التحكم تعدّل ملفات المحتوى مباشرة، ثم تعيد بناء الموقع لتظهر التغييرات. لا حاجة
+    لتعديل أي شيفرة برمجية.
+  </div>
+
+  <h2 id="start"><span class="num">١</span> كيف تفتح لوحة التحكم</h2>
+  <p>تحتاج مرة واحدة إلى تشغيل أمرين من نافذة الطرفية (Terminal) داخل مجلد المشروع
+    <code>jadeel-website</code>:</p>
+  <ol>
+    <li>لتشغيل اللوحة:&nbsp; <code>npm run panel</code></li>
+    <li>افتح المتصفح على العنوان:&nbsp; <code>http://localhost:4400</code></li>
+  </ol>
+  <div class="box warn">
+    <strong>مهم:</strong> افتح اللوحة في متصفح <strong>Google Chrome</strong> أو
+    <strong>Microsoft Edge</strong> فقط، لأنهما يدعمان الحفظ المباشر في الملفات.
+    (متصفح Safari لا يدعم هذه الميزة.)
+  </div>
+  <p>ولكي ترى تغييراتك مباشرة أثناء التعديل، شغّل أيضًا خادم المعاينة في نافذة طرفية أخرى:</p>
+  <ol><li><code>npm run dev</code> ثم افتح <code>http://localhost:4321</code></li></ol>
+
+  <h2 id="link"><span class="num">٢</span> ربط المشروع</h2>
+  <ol>
+    <li>اضغط زر <strong>«🔗 ربط مجلد المشروع»</strong> أعلى اللوحة.</li>
+    <li>ستظهر نافذة لاختيار مجلد — اختر مجلد <code>jadeel-website</code> نفسه.</li>
+    <li>سيطلب المتصفح السماح بالتعديل — اضغط <kbd>تعديل</kbd> أو <kbd>Edit / Allow</kbd>.</li>
+  </ol>
+  <div class="box">عند نجاح الربط ستتغيّر الحالة أعلى اليسار إلى <strong>«تم ربط المشروع ✓»</strong>
+    وتظهر التبويبات الأربعة. تحتاج لتكرار هذه الخطوة في كل مرة تفتح فيها اللوحة من جديد.</div>
+
+  <h2 id="content"><span class="num">٣</span> تعديل النصوص (عربي وإنجليزي)</h2>
+  <p>من تبويب <strong>«📝 المحتوى»</strong>:</p>
+  <ol>
+    <li>اختر اللغة من الأعلى: <strong>العربية</strong> أو <strong>English</strong>.</li>
+    <li>اختر الصفحة من القائمة الجانبية (الرئيسية، من نحن، الخدمات…).</li>
+    <li>عدّل النصوص في الحقول. الحقول الطويلة تظهر كصناديق نص متعددة الأسطر.</li>
+  </ol>
+  <h3>القوائم القابلة للإضافة والحذف</h3>
+  <p>بعض الأقسام عبارة عن قوائم (مثل: الخدمات، المنتجات، الأسئلة، المخرجات). فيها:</p>
+  <ul>
+    <li>زر <strong>«＋ إضافة»</strong> لإضافة عنصر جديد.</li>
+    <li>علامة <strong>«✕»</strong> على كل عنصر لحذفه.</li>
+  </ul>
+  <h3>حقل «الأيقونة»</h3>
+  <p>عند وجود حقل «الأيقونة»، اختر من القائمة المنسدلة، وستظهر معاينة صغيرة للأيقونة بجوارها.</p>
+  <div class="box warn"><strong>لا تنسَ:</strong> بعد الانتهاء، اضغط زر
+    <strong>«💾 حفظ كل التغييرات»</strong> بالأعلى. النصوص لا تُحفظ تلقائيًا.</div>
+  <div class="box note">عدّل النص نفسه في اللغتين (العربية ثم English) حتى يبقى الموقع متناسقًا بلغتيه.</div>
+
+  <h2 id="images"><span class="num">٤</span> تغيير الصور والشعار</h2>
+  <p>من تبويب <strong>«🖼️ الصور والشعار»</strong> تجد بطاقات للشعار وأيقونات المتصفح.
+    اضغط <strong>«استبدال الصورة»</strong> واختر الصورة الجديدة.</p>
+  <table>
+    <tr><th>العنصر</th><th>أين يظهر</th><th>المقاس المقترح</th></tr>
+    <tr><td>الشعار الأبيض</td><td>الترويسة والتذييل (خلفية كحلية)</td><td>PNG شفاف مربّع</td></tr>
+    <tr><td>الشعار الملوّن</td><td>البطاقات والمعاينات</td><td>PNG شفاف مربّع</td></tr>
+    <tr><td>الشعار الكامل</td><td>الاستخدامات الكبيرة</td><td>PNG شفاف</td></tr>
+    <tr><td>أيقونة المتصفح</td><td>تبويب المتصفح</td><td>٣٢×٣٢ و ٥١٢×٥١٢</td></tr>
+  </table>
+  <div class="box note">الصور تُحفظ <strong>مباشرة</strong> فور اختيارها (لا تحتاج زر الحفظ).
+    يُفضّل أن تكون بصيغة PNG بخلفية شفافة وبأبعاد قريبة من الأصل.</div>
+
+  <h2 id="design"><span class="num">٥</span> تغيير الألوان والتصميم</h2>
+  <p>من تبويب <strong>«🎨 الألوان والتصميم»</strong>:</p>
+  <ul>
+    <li>غيّر أي لون بالضغط على المربّع الملوّن، أو بكتابة كود اللون (مثل <code>#11335e</code>).</li>
+    <li>تظهر <strong>المعاينة المباشرة</strong> على الجانب فورًا.</li>
+    <li>يمكن تعديل درجة استدارة حواف الأزرار والبطاقات بالمؤشّرات.</li>
+    <li>زر <strong>«↩︎ استعادة الألوان الأصلية»</strong> يعيد ألوان هوية جديل المعتمدة.</li>
+  </ul>
+  <div class="box warn"><strong>انتبه للتباين:</strong> القاعدة في هوية جديل أن «الكحلي يحمل النص،
+    والأخضر والذهبي يدعمانه». تجنّب الألوان الفاتحة جدًا للنصوص حتى تبقى مقروءة.</div>
+  <div class="box">بعد تعديل الألوان اضغط <strong>«💾 حفظ كل التغييرات»</strong> لتُطبّق على الموقع.</div>
+
+  <h2 id="articles"><span class="num">٦</span> إدارة المقالات</h2>
+  <p>من تبويب <strong>«📰 المقالات»</strong> تدير محتوى صفحة «المعرفة»:</p>
+  <ol>
+    <li>اضغط <strong>«＋ مقال جديد»</strong>، أو اختر مقالًا من القائمة لتعديله.</li>
+    <li>اختر اللغة، واكتب <strong>اسم ملف بالإنجليزية</strong> (للمقال الجديد فقط) مثل <code>my-article</code>.</li>
+    <li>املأ العنوان والوصف والتصنيف ومدة القراءة والتاريخ.</li>
+    <li>اكتب نص المقال في الصندوق الكبير (يدعم تنسيق <em>Markdown</em>: <code>## عنوان</code>، <code>- نقطة</code>).</li>
+    <li>اضغط <strong>«💾 حفظ المقال»</strong>. لحذف مقال استخدم زر <strong>«🗑 حذف المقال»</strong>.</li>
+  </ol>
+  <div class="box note">كل مقال يُحفظ مباشرة كملف مستقل. لإظهار مقال بلغتين، أنشئ نسختين: واحدة عربية وأخرى إنجليزية.</div>
+
+  <h2 id="publish"><span class="num">٧</span> معاينة التغييرات ونشرها</h2>
+  <h3>المعاينة المحلية</h3>
+  <p>إذا كان <code>npm run dev</code> يعمل، افتح <code>http://localhost:4321</code> وستظهر
+    تغييرات النصوص والمقالات فورًا. لتغييرات الألوان أعد تحميل الصفحة.</p>
+  <h3>النشر للموقع الحقيقي</h3>
+  <ol>
+    <li>أوقف المعاينة، ثم نفّذ أمر البناء:&nbsp; <code>npm run build</code></li>
+    <li>سيُنشأ مجلد <code>dist/</code> — ارفع محتواه إلى الاستضافة (Netlify، Vercel، أو أي خادم).</li>
+  </ol>
+  <div class="box">في حال استخدمت استضافة مثل Netlify مربوطة بـ Git، سيكفي حفظ التغييرات ورفعها
+    ليُعاد بناء الموقع تلقائيًا.</div>
+
+  <h2 id="faq"><span class="num">٨</span> أسئلة شائعة</h2>
+  <h3>هل أُفسد الموقع لو أخطأت؟</h3>
+  <p>تعديل النصوص آمن تمامًا. تجنّب فقط حذف أقسام كاملة إن لم تكن متأكدًا. ويمكن دائمًا
+    استعادة النسخة الأصلية إن كان المشروع على Git (<code>git checkout</code>).</p>
+  <h3>زر الحفظ غير مفعّل؟</h3>
+  <p>يتفعّل تلقائيًا بمجرد إجراء أي تعديل. إن بقي معطّلًا فأنت لم تربط المشروع بعد.</p>
+  <h3>لم تظهر نافذة اختيار المجلد؟</h3>
+  <p>تأكد أنك تستخدم Chrome أو Edge، وأنك فتحت اللوحة عبر <code>http://localhost:4400</code>
+    (لا بالنقر المزدوج على الملف).</p>
+  <h3>التغييرات لا تظهر على الموقع؟</h3>
+  <p>تأكد من الضغط على «حفظ كل التغييرات»، ثم أعد تحميل صفحة المعاينة، أو نفّذ
+    <code>npm run build</code> للنشر.</p>
+
+  <div class="foot">جديل لحلول الأعمال · لوحة التحكم الإصدار ١٫٠ — يمكنك طباعة هذا الدليل (ملف PDF) من المتصفح: <kbd>Cmd/Ctrl + P</kbd></div>
+</div>
+</body>
+</html>

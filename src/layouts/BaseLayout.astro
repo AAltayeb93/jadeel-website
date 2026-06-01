@@ -1,0 +1,89 @@
+---
+import "../styles/global.css";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import type { Locale, RouteKey } from "../i18n";
+import { dir, altLocalePath, path, asset } from "../i18n";
+import { ui } from "../data/site";
+import theme from "../data/theme.json";
+
+interface Props {
+  locale: Locale;
+  route: RouteKey;
+  title: string;
+  description: string;
+}
+const { locale, route, title, description } = Astro.props;
+const direction = dir(locale);
+const t = ui[locale];
+
+// Brand tokens from theme.json (editable in the control panel) override the
+// defaults in global.css. Inline on <html> so they always win.
+const c = theme.colors;
+const r = theme.radius;
+const themeStyle = [
+  `--navy:${c.navy}`, `--green:${c.green}`, `--green-700:${c.green700}`,
+  `--gold:${c.gold}`, `--gold-600:${c.gold600}`,
+  `--ink:${c.ink}`, `--slate:${c.slate}`, `--cloud:${c.cloud}`, `--paper:${c.paper}`,
+  `--r-btn:${r.button}`, `--r-card:${r.card}`, `--r-panel:${r.panel}`,
+].join(";");
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const altPath = altLocalePath(locale, route);
+const otherLocale: Locale = locale === "ar" ? "en" : "ar";
+---
+<!doctype html>
+<html lang={locale} dir={direction} style={themeStyle}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang={otherLocale} href={new URL(altPath, Astro.site)} />
+    <link rel="alternate" hreflang={locale} href={canonical} />
+
+    <meta name="theme-color" content="#11335e" />
+    <link rel="icon" href={asset("/favicon.ico")} sizes="any" />
+    <link rel="icon" type="image/png" href={asset("/favicon-32.png")} sizes="32x32" />
+    <link rel="apple-touch-icon" href={asset("/favicon-180.png")} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:locale" content={locale === "ar" ? "ar_SA" : "en_US"} />
+    <meta property="og:image" content={new URL(asset("/favicon-512.png"), Astro.site)} />
+    <meta name="twitter:card" content="summary" />
+
+    <!-- Fonts: El Messiri (Arabic display) + Readex Pro (AR+Latin body/UI) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;500;600;700&family=Readex+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <a href="#main" class="skip-link">{t.skip}</a>
+    <Header locale={locale} route={route} />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer locale={locale} />
+
+    <style is:global>
+      .skip-link {
+        position: absolute; inset-inline-start: -9999px; top: 0; z-index: 100;
+        background: var(--navy); color: #fff; padding: 12px 18px; border-radius: 0 0 8px 0;
+      }
+      .skip-link:focus { inset-inline-start: 0; }
+    </style>
+
+    <script>
+      // Reveal-on-scroll
+      const obs = new IntersectionObserver((entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting) { e.target.classList.add("in"); obs.unobserve(e.target); }
+        }
+      }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+      document.querySelectorAll(".reveal").forEach((el) => obs.observe(el));
+    </script>
+  </body>
+</html>

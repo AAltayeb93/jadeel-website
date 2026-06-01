@@ -1,0 +1,66 @@
+---
+import type { Locale } from "../i18n";
+import { path } from "../i18n";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/PageHero.astro";
+import CTABand from "../components/CTABand.astro";
+import Icon from "../components/Icon.astro";
+import { content } from "../data/content";
+
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+const c = content[locale];
+const s = c.services;
+---
+<BaseLayout locale={locale} route="services" title={c.meta.services.title} description={c.meta.services.desc}>
+  <PageHero eyebrow={s.hero.eyebrow} title={s.hero.title} lead={s.hero.lead} />
+
+  <section class="section">
+    <div class="container">
+      <div class="families">
+        {s.families.map((fam, i) => (
+          <article class="family reveal">
+            <div class="fam-head">
+              <span class="card-icon"><Icon name={fam.icon} /></span>
+              <div>
+                <span class="fam-num">{(i + 1).toString().padStart(2, "0")}</span>
+                <h2>{fam.title}</h2>
+              </div>
+            </div>
+            <ul class="fam-items">
+              {fam.items.map((it) => (
+                <li><Icon name="check" size={16} /><span>{it}</span></li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
+      <div class="services-note reveal">
+        <p>{locale === "ar"
+          ? "تتحول كل خدمة إلى منتج واضح المخرجات داخل صفحة منتجات جديل."
+          : "Each service becomes a defined-output product on the Jadeel products page."}</p>
+        <a class="btn btn--ghost" href={path(locale, "products")}>
+          {locale === "ar" ? "استعرض منتجات جديل" : "Explore Jadeel products"}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <CTABand locale={locale} title={c.home.finalCta.title} text={c.home.finalCta.text} />
+</BaseLayout>
+
+<style>
+  .families { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s6); }
+  .family { background: var(--white); border: 1px solid var(--border); border-radius: var(--r-card); padding: var(--s6); box-shadow: var(--shadow-sm); transition: box-shadow 0.18s ease, transform 0.18s ease; }
+  .family:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+  .fam-head { display: flex; gap: var(--s4); align-items: center; padding-bottom: var(--s5); margin-bottom: var(--s5); border-bottom: 1px solid var(--border); }
+  .fam-head .card-icon { margin-bottom: 0; flex-shrink: 0; }
+  .fam-num { font-family: var(--font-display); font-weight: 700; color: var(--gold); font-size: 0.95rem; }
+  .fam-head h2 { font-size: 1.35rem; }
+  .fam-items { display: flex; flex-direction: column; gap: var(--s3); }
+  .fam-items li { display: flex; gap: var(--s3); align-items: center; color: var(--text); font-size: 1rem; }
+  .fam-items :global(svg) { color: var(--green); flex-shrink: 0; }
+  .services-note { margin-top: var(--s7); display: flex; align-items: center; justify-content: space-between; gap: var(--s5); flex-wrap: wrap; background: var(--navy-050); border: 1px solid var(--navy-100); border-radius: var(--r-card); padding: var(--s5) var(--s6); }
+  .services-note p { font-weight: 500; color: var(--navy); }
+  @media (max-width: 800px) { .families { grid-template-columns: 1fr; } }
+</style>

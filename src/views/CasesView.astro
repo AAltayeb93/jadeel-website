@@ -1,0 +1,62 @@
+---
+import type { Locale } from "../i18n";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/PageHero.astro";
+import CTABand from "../components/CTABand.astro";
+import Icon from "../components/Icon.astro";
+import { content } from "../data/content";
+
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+const c = content[locale];
+const cs = c.cases;
+---
+<BaseLayout locale={locale} route="cases" title={c.meta.cases.title} description={c.meta.cases.desc}>
+  <PageHero eyebrow={cs.hero.eyebrow} title={cs.hero.title} lead={cs.hero.lead} />
+
+  <section class="section">
+    <div class="container">
+      <div class="cases">
+        {cs.list.map((cse, i) => (
+          <article class:list={["case", { alt: i % 2 === 1 }]}>
+            <div class="case-visual reveal" aria-hidden="true">
+              <span class="case-ic"><Icon name={cse.icon} size={40} /></span>
+            </div>
+            <div class="case-copy reveal">
+              <h2>{cse.title}</h2>
+              <p>{cse.text}</p>
+              <ul class="case-tags">
+                {cse.tags.map((tag) => (<li>{tag}</li>))}
+              </ul>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTABand locale={locale} title={c.home.finalCta.title} text={c.home.finalCta.text} />
+</BaseLayout>
+
+<style>
+  .cases { display: flex; flex-direction: column; gap: var(--s8); }
+  .case { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: var(--s7); align-items: center; }
+  .case.alt { direction: inherit; }
+  .case.alt .case-visual { order: 2; }
+  .case-visual {
+    aspect-ratio: 4 / 3; border-radius: var(--r-panel);
+    background: linear-gradient(150deg, var(--navy-050), var(--green-050));
+    border: 1px solid var(--navy-100);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .case.alt .case-visual { background: linear-gradient(150deg, var(--gold-050), var(--navy-050)); }
+  .case-ic { display: inline-flex; align-items: center; justify-content: center; width: 96px; height: 96px; border-radius: 24px; background: #fff; color: var(--navy); box-shadow: var(--shadow-md); }
+  .case-copy h2 { font-size: 1.7rem; }
+  .case-copy p { margin-block: var(--s4) var(--s5); color: var(--text-muted); }
+  .case-tags { display: flex; flex-wrap: wrap; gap: var(--s2); }
+  .case-tags li { background: var(--navy-050); color: var(--navy); padding: 6px 14px; border-radius: var(--r-pill); font-size: 0.85rem; font-weight: 600; }
+  @media (max-width: 800px) {
+    .case, .case.alt { grid-template-columns: 1fr; gap: var(--s5); }
+    .case.alt .case-visual { order: 0; }
+  }
+</style>

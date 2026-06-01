@@ -1,0 +1,335 @@
+/* =========================================================================
+   Jadeel Business Solutions — Design System
+   Built from the official Brand Guidelines v1.0 (2026).
+   Navy carries text; green and gold support it. 8px spacing base.
+   ========================================================================= */
+
+/* ---- Design tokens ---- */
+:root {
+  /* Primary triad */
+  --navy: #11335e;
+  --green: #2c7a5b;
+  --green-700: #1f5a42; /* accessible green text on white */
+  --gold: #be8c3a;
+  --gold-600: #a6792e; /* darker gold for hover */
+
+  /* Navy scale — derived from --navy so editing the base recolours everything */
+  --navy-900: color-mix(in srgb, var(--navy), #000 28%);
+  --navy-800: color-mix(in srgb, var(--navy), #000 16%);
+  --navy-700: var(--navy);
+  --navy-600: color-mix(in srgb, var(--navy), #fff 14%);
+  --navy-500: color-mix(in srgb, var(--navy), #fff 28%);
+  --navy-100: color-mix(in srgb, var(--navy), #fff 82%);
+  --navy-050: color-mix(in srgb, var(--navy), #fff 92%);
+
+  /* Green scale — derived from --green */
+  --green-900: color-mix(in srgb, var(--green), #000 40%);
+  --green-100: color-mix(in srgb, var(--green), #fff 78%);
+  --green-050: color-mix(in srgb, var(--green), #fff 90%);
+
+  /* Gold scale — derived from --gold */
+  --gold-100: color-mix(in srgb, var(--gold), #fff 72%);
+  --gold-050: color-mix(in srgb, var(--gold), #fff 88%);
+
+  /* Neutrals */
+  --ink: #18202b;
+  --slate: #5b6573;
+  --mist: #aeb6c2;
+  --cloud: #e6eaf0;
+  --paper: #f5f7fa;
+  --white: #ffffff;
+
+  /* Semantic */
+  --text: var(--ink);
+  --text-muted: var(--slate);
+  --bg: var(--white);
+  --bg-soft: var(--paper);
+  --border: var(--cloud);
+
+  /* Spacing — 8px base */
+  --s1: 4px;
+  --s2: 8px;
+  --s3: 12px;
+  --s4: 16px;
+  --s5: 24px;
+  --s6: 32px;
+  --s7: 48px;
+  --s8: 64px;
+  --s9: 96px;
+
+  /* Radii */
+  --r-btn: 6px;
+  --r-card: 10px;
+  --r-panel: 16px;
+  --r-pill: 999px;
+
+  /* Layout */
+  --maxw: 1200px;
+  --gutter: 24px;
+  --page-x: clamp(20px, 5vw, 96px);
+
+  /* Type families */
+  --font-display: "El Messiri", "Readex Pro", system-ui, sans-serif;
+  --font-body: "Readex Pro", system-ui, -apple-system, sans-serif;
+
+  /* Shadow */
+  --shadow-sm: 0 1px 2px rgba(17, 51, 94, 0.06), 0 1px 3px rgba(17, 51, 94, 0.04);
+  --shadow-md: 0 6px 20px rgba(17, 51, 94, 0.08), 0 2px 6px rgba(17, 51, 94, 0.05);
+  --shadow-lg: 0 18px 50px rgba(11, 35, 66, 0.16);
+}
+
+/* ---- Latin uses Readex Pro for display too (El Messiri is Arabic-led) ---- */
+:root[lang="en"] {
+  --font-display: "Readex Pro", system-ui, sans-serif;
+}
+
+/* ---- Reset ---- */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+* { margin: 0; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  scroll-padding-top: 88px;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+/* Arabic gets more leading than Latin */
+:root[lang="ar"] body { line-height: 1.9; }
+
+img, svg { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+ul, ol { list-style: none; padding: 0; }
+button { font: inherit; cursor: pointer; }
+
+/* ---- Typography ---- */
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  color: var(--navy);
+  line-height: 1.25;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+:root[lang="ar"] h1, :root[lang="ar"] h2, :root[lang="ar"] h3, :root[lang="ar"] h4 {
+  line-height: 1.4;
+  letter-spacing: 0;
+}
+
+.display { font-size: clamp(2.2rem, 5.2vw, 3.75rem); line-height: 1.15; }
+:root[lang="ar"] .display { line-height: 1.35; }
+h1, .h1 { font-size: clamp(2rem, 4.4vw, 2.875rem); }
+h2, .h2 { font-size: clamp(1.6rem, 3.2vw, 2.25rem); }
+h3, .h3 { font-size: clamp(1.3rem, 2.2vw, 1.75rem); }
+.body-lg { font-size: 1.125rem; line-height: 1.85; }
+:root[lang="ar"] .body-lg { line-height: 2; }
+.caption {
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+:root[lang="ar"] .caption { letter-spacing: 0; }
+
+p { color: var(--text); }
+.lead { color: var(--text-muted); }
+
+/* ---- Layout helpers ---- */
+.container {
+  width: 100%;
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding-inline: var(--page-x);
+}
+.section { padding-block: clamp(48px, 7vw, 96px); }
+.section--tight { padding-block: clamp(40px, 5vw, 64px); }
+.section--soft { background: var(--bg-soft); }
+.section--navy { background: var(--navy); color: #dfe7f2; }
+.section--navy h2, .section--navy h3, .section--navy h4 { color: var(--white); }
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s2);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--green-700);
+  text-transform: uppercase;
+}
+:root[lang="ar"] .eyebrow { letter-spacing: 0; text-transform: none; font-size: 0.95rem; }
+.eyebrow::before {
+  content: "";
+  inline-size: 22px;
+  block-size: 2px;
+  background: var(--gold);
+}
+.section--navy .eyebrow { color: var(--gold); }
+
+.section-head { max-width: 720px; margin-bottom: var(--s7); }
+.section-head.center { margin-inline: auto; text-align: center; }
+.section-head p { margin-top: var(--s3); color: var(--text-muted); font-size: 1.0625rem; }
+.section--navy .section-head p { color: #c2cee0; }
+
+/* ---- Diamond ornament —◆— ---- */
+.diamond {
+  display: inline-block;
+  inline-size: 8px;
+  block-size: 8px;
+  background: var(--gold);
+  transform: rotate(45deg);
+  vertical-align: middle;
+}
+.rule-ornament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s3);
+  color: var(--gold);
+}
+.rule-ornament::before, .rule-ornament::after {
+  content: "";
+  block-size: 1.5px;
+  inline-size: 40px;
+  background: currentColor;
+  opacity: 0.55;
+}
+
+/* ---- Buttons ---- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s2);
+  padding: 13px 26px;
+  border-radius: var(--r-btn);
+  font-weight: 600;
+  font-size: 0.975rem;
+  border: 1.5px solid transparent;
+  transition: transform 0.12s ease, background 0.18s ease, border-color 0.18s ease, color 0.18s ease;
+  white-space: nowrap;
+}
+.btn:active { transform: scale(0.98); }
+.btn--primary { background: var(--navy); color: var(--white); }
+.btn--primary:hover { background: var(--navy-900); }
+.btn--gold { background: var(--gold); color: var(--navy-900); }
+.btn--gold:hover { background: var(--gold-600); color: var(--white); }
+.btn--ghost { background: transparent; color: var(--navy); border-color: var(--navy-100); }
+.btn--ghost:hover { border-color: var(--navy); background: var(--navy-050); }
+/* Ghost button on dark/coloured backgrounds (hero, navy & green bands) */
+.btn--ghost-light { background: transparent; color: #fff; border-color: rgba(255,255,255,0.4); }
+.btn--ghost-light:hover { border-color: #fff; background: rgba(255,255,255,0.12); }
+.section--navy .btn--ghost { color: var(--white); border-color: rgba(255,255,255,0.3); }
+.section--navy .btn--ghost:hover { border-color: var(--white); background: rgba(255,255,255,0.08); }
+
+.btn-row { display: flex; flex-wrap: wrap; gap: var(--s3); }
+
+/* ---- Badges ---- */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: var(--r-pill);
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+.badge--active { background: var(--green-050); color: var(--green-700); }
+.badge--active::before { content: "●"; color: var(--green); font-size: 0.7em; }
+.badge--featured { background: var(--gold-050); color: var(--gold-600); }
+.badge--featured::before { content: "★"; }
+
+/* ---- Cards ---- */
+.card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--r-card);
+  padding: var(--s6);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+  block-size: 100%;
+}
+.card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: var(--navy-100); }
+.card h3, .card h4 { font-size: 1.2rem; margin-bottom: var(--s2); }
+.card p { color: var(--text-muted); font-size: 0.975rem; }
+
+.card-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: 52px;
+  block-size: 52px;
+  border-radius: 12px;
+  background: var(--navy-050);
+  color: var(--navy);
+  margin-bottom: var(--s4);
+}
+.card-icon svg { inline-size: 26px; block-size: 26px; }
+.card--gold .card-icon { background: var(--gold-050); color: var(--gold-600); }
+.card--green .card-icon { background: var(--green-050); color: var(--green-700); }
+
+/* ---- Grids ---- */
+.grid { display: grid; gap: var(--s5); }
+.grid-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-4 { grid-template-columns: repeat(4, 1fr); }
+@media (max-width: 900px) {
+  .grid-3, .grid-4 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 560px) {
+  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+}
+
+/* ---- Fields ---- */
+.field { display: flex; flex-direction: column; gap: 6px; margin-bottom: var(--s4); }
+.field label { font-size: 0.85rem; font-weight: 600; color: var(--navy); }
+.field input, .field select, .field textarea {
+  font: inherit;
+  font-size: 0.95rem;
+  padding: 12px 14px;
+  border: 1.5px solid var(--cloud);
+  border-radius: var(--r-btn);
+  background: var(--white);
+  color: var(--ink);
+  transition: border-color 0.16s ease, box-shadow 0.16s ease;
+  width: 100%;
+}
+.field input::placeholder, .field textarea::placeholder { color: var(--mist); }
+.field input:focus, .field select:focus, .field textarea:focus {
+  outline: none;
+  border-color: var(--navy-500);
+  box-shadow: 0 0 0 3px var(--navy-050);
+}
+.field textarea { resize: vertical; min-height: 120px; }
+
+/* ---- Focus visibility ---- */
+a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ---- Utility ---- */
+.text-center { text-align: center; }
+.mt-0 { margin-top: 0; }
+.flow > * + * { margin-top: var(--s4); }
+
+/* ---- Reveal-on-scroll ---- */
+.reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  html { scroll-behavior: auto; }
+}

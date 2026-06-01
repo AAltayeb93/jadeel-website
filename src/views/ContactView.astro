@@ -1,0 +1,138 @@
+---
+import type { Locale } from "../i18n";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/PageHero.astro";
+import Icon from "../components/Icon.astro";
+import { content } from "../data/content";
+import { ui, contactInfo } from "../data/site";
+
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+const c = content[locale];
+const t = ui[locale];
+const ct = c.contact;
+const f = ct.form;
+---
+<BaseLayout locale={locale} route="contact" title={c.meta.contact.title} description={c.meta.contact.desc}>
+  <PageHero eyebrow={ct.hero.eyebrow} title={ct.hero.title} lead={ct.hero.lead} />
+
+  <section class="section">
+    <div class="container contact-grid">
+      <!-- Channels -->
+      <aside class="contact-aside reveal">
+        <ul class="channels">
+          {ct.channels.map((ch) => (
+            <li>
+              <span class="ch-ic"><Icon name={ch.icon} /></span>
+              <div><span class="ch-t">{ch.title}</span><span class="ch-v">{ch.value}</span></div>
+            </li>
+          ))}
+        </ul>
+        <div class="aside-social">
+          <span class="ch-t">{t.followUs}</span>
+          <ul>
+            {contactInfo.social.map((so) => (
+              <li><a href={so.href} aria-label={so.name}><Icon name={so.icon} size={18} /></a></li>
+            ))}
+          </ul>
+        </div>
+        <div class="aside-types">
+          <span class="ch-t">{locale === "ar" ? "أنواع الطلبات" : "Request types"}</span>
+          <ul class="type-chips">
+            {ct.requestTypes.map((rt) => (<li>{rt}</li>))}
+          </ul>
+        </div>
+      </aside>
+
+      <!-- Form -->
+      <div class="contact-form-wrap reveal">
+        <form class="contact-form" data-contact-form>
+          <p class="form-hint">{t.requiredHint}</p>
+          <div class="form-row">
+            <div class="field">
+              <label for="org">{f.name} *</label>
+              <input id="org" name="org" type="text" required />
+            </div>
+            <div class="field">
+              <label for="person">{f.contactName} *</label>
+              <input id="person" name="person" type="text" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="field">
+              <label for="entityType">{f.entityType}</label>
+              <select id="entityType" name="entityType">
+                {ct.entityTypes.map((e) => (<option>{e}</option>))}
+              </select>
+            </div>
+            <div class="field">
+              <label for="service">{f.service}</label>
+              <select id="service" name="service">
+                {ct.requestTypes.map((r) => (<option>{r}</option>))}
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="field">
+              <label for="email">{f.email} *</label>
+              <input id="email" name="email" type="email" required placeholder="name@organization.sa" />
+            </div>
+            <div class="field">
+              <label for="field">{f.field}</label>
+              <input id="field" name="field" type="text" />
+            </div>
+          </div>
+          <div class="field">
+            <label for="website">{f.website}</label>
+            <input id="website" name="website" type="url" placeholder="https://" />
+          </div>
+          <div class="field">
+            <label for="message">{f.message}</label>
+            <textarea id="message" name="message" rows="4"></textarea>
+          </div>
+          <button class="btn btn--gold form-submit" type="submit">{f.submit}</button>
+          <p class="form-success" data-success hidden>{t.formSent}</p>
+        </form>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .contact-grid { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: var(--s7); align-items: start; }
+  .contact-aside { background: var(--navy); color: #d7e2f1; border-radius: var(--r-panel); padding: clamp(24px, 4vw, 40px); position: sticky; top: 90px; }
+  .channels { display: flex; flex-direction: column; gap: var(--s5); }
+  .channels li { display: flex; gap: var(--s4); align-items: center; }
+  .ch-ic { display: inline-flex; align-items: center; justify-content: center; width: 48px; height: 48px; border-radius: 12px; background: rgba(190,140,58,0.18); color: var(--gold); flex-shrink: 0; }
+  .ch-t { display: block; font-size: 0.78rem; color: #9fb0c8; }
+  .ch-v { display: block; font-weight: 600; color: #fff; }
+  .aside-social, .aside-types { margin-top: var(--s6); padding-top: var(--s5); border-top: 1px solid rgba(255,255,255,0.1); }
+  .aside-social ul { display: flex; gap: var(--s2); margin-top: var(--s3); }
+  .aside-social a { display: inline-flex; align-items: center; justify-content: center; width: 38px; height: 38px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.16); color: #cdd8e8; transition: background 0.15s, color 0.15s; }
+  .aside-social a:hover { background: var(--gold); color: var(--navy-900); border-color: var(--gold); }
+  .type-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: var(--s3); }
+  .type-chips li { font-size: 0.8rem; background: rgba(255,255,255,0.07); padding: 5px 12px; border-radius: var(--r-pill); }
+
+  .contact-form-wrap { background: var(--white); border: 1px solid var(--border); border-radius: var(--r-panel); padding: clamp(24px, 4vw, 40px); box-shadow: var(--shadow-sm); }
+  .form-hint { font-size: 0.82rem; color: var(--text-muted); margin-bottom: var(--s5); }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s4); }
+  .form-submit { margin-top: var(--s3); width: 100%; }
+  .form-success { margin-top: var(--s4); background: var(--green-050); color: var(--green-700); border-radius: var(--r-btn); padding: 12px 16px; font-weight: 600; text-align: center; }
+  @media (max-width: 860px) {
+    .contact-grid { grid-template-columns: 1fr; }
+    .contact-aside { position: static; }
+  }
+  @media (max-width: 520px) { .form-row { grid-template-columns: 1fr; } }
+</style>
+
+<script>
+  const form = document.querySelector("[data-contact-form]") as HTMLFormElement | null;
+  const success = document.querySelector("[data-success]") as HTMLElement | null;
+  form?.addEventListener("submit", (e) => {
+    e.preventDefault();
+    if (!form.checkValidity()) { form.reportValidity(); return; }
+    // No backend yet — show confirmation. Wire to an endpoint/email service later.
+    form.querySelectorAll("input,select,textarea,button").forEach((el) => ((el as HTMLInputElement).disabled = true));
+    success?.removeAttribute("hidden");
+  });
+</script>

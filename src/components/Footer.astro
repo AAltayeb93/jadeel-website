@@ -1,0 +1,104 @@
+---
+import type { Locale, RouteKey } from "../i18n";
+import { path, asset } from "../i18n";
+import { nav, ui, brand, contactInfo } from "../data/site";
+import Icon from "./Icon.astro";
+
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+const items = nav[locale];
+const t = ui[locale];
+const year = 2026;
+const tagline = locale === "ar"
+  ? "نبني نماذج الاستدامة والأثر للمنظمات غير الربحية والمشاريع الاجتماعية."
+  : "Building sustainability and impact models for non-profits and social ventures.";
+---
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a class="f-brand" href={path(locale, "home")}>
+        <img src={asset("/logo/mark-white.png")} alt="" width="44" height="44" />
+        <span>
+          <span class="f-name">{brand.name[locale]}</span>
+          <span class="f-tag">{brand.tagline[locale]}</span>
+        </span>
+      </a>
+      <p class="f-desc">{tagline}</p>
+      <div class="rule-ornament f-rule"><span class="diamond"></span></div>
+      <ul class="f-social" aria-label={t.followUs}>
+        {contactInfo.social.map((s) => (
+          <li><a href={s.href} aria-label={s.name}><Icon name={s.icon} size={18} /></a></li>
+        ))}
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>{t.sitemapTitle}</h4>
+      <ul>
+        {items.slice(0, 5).map((it) => (<li><a href={path(locale, it.key)}>{it.label}</a></li>))}
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>{t.quickLinks}</h4>
+      <ul>
+        {items.slice(5).map((it) => (<li><a href={path(locale, it.key)}>{it.label}</a></li>))}
+      </ul>
+    </div>
+
+    <div class="footer-col footer-contact">
+      <h4>{t.contactUs}</h4>
+      <ul>
+        <li><Icon name="mail" size={16} /><a href={`mailto:${contactInfo.email}`}>{contactInfo.email}</a></li>
+        <li><Icon name="phone" size={16} /><span>{contactInfo.phoneDisplay[locale]}</span></li>
+        <li><Icon name="pin" size={16} /><span>{contactInfo.city[locale]}</span></li>
+      </ul>
+      <a class="btn btn--gold f-cta" href={path(locale, "contact")}>{t.bookCta}</a>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container fb-inner">
+      <p>© {year} {brand.fullName[locale]}. {t.allRights}.</p>
+      <p class="fb-meta">{locale === "ar" ? "هوية بصرية v1.0" : "Brand identity v1.0"}</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer { background: var(--navy-900); color: #b9c6da; }
+  .footer-grid {
+    display: grid; grid-template-columns: 1.6fr 1fr 1fr 1.3fr; gap: var(--s7);
+    padding-block: var(--s9) var(--s7);
+  }
+  .f-brand { display: inline-flex; align-items: center; gap: 10px; }
+  .f-name { display: block; font-family: var(--font-display); font-weight: 700; font-size: 1.4rem; color: #fff; }
+  .f-tag { display: block; font-size: 0.72rem; color: var(--gold); }
+  .f-desc { margin-top: var(--s4); max-width: 320px; color: #9fb0c8; font-size: 0.95rem; }
+  .f-rule { justify-content: flex-start; margin-top: var(--s4); color: var(--gold); opacity: 0.8; }
+  .f-social { display: flex; gap: var(--s2); margin-top: var(--s5); }
+  .f-social a {
+    display: inline-flex; align-items: center; justify-content: center; width: 38px; height: 38px;
+    border-radius: 50%; border: 1px solid rgba(255,255,255,0.14); color: #cdd8e8;
+    transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+  }
+  .f-social a:hover { background: var(--gold); border-color: var(--gold); color: var(--navy-900); }
+
+  .footer-col h4 { color: #fff; font-size: 1rem; margin-bottom: var(--s4); }
+  .footer-col ul { display: flex; flex-direction: column; gap: 10px; }
+  .footer-col a, .footer-contact span { color: #a9b9cf; font-size: 0.92rem; transition: color 0.15s ease; }
+  .footer-col a:hover { color: var(--gold); }
+  .footer-contact ul li { display: flex; align-items: center; gap: 10px; }
+  .footer-contact :global(svg) { color: var(--gold); flex-shrink: 0; }
+  .f-cta { margin-top: var(--s5); }
+
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); }
+  .fb-inner { display: flex; justify-content: space-between; gap: var(--s4); padding-block: var(--s4); flex-wrap: wrap; }
+  .footer-bottom p { font-size: 0.82rem; color: #8295b0; }
+
+  @media (max-width: 900px) {
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: var(--s6); padding-block: var(--s7) var(--s6); }
+    .footer-brand { grid-column: 1 / -1; }
+  }
+  @media (max-width: 520px) { .footer-grid { grid-template-columns: 1fr; } }
+</style>

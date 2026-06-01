@@ -1,0 +1,251 @@
+---
+import type { Locale } from "../i18n";
+import { path, asset } from "../i18n";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import FeatureCard from "../components/FeatureCard.astro";
+import CTABand from "../components/CTABand.astro";
+import Icon from "../components/Icon.astro";
+import { content } from "../data/content";
+import { ui } from "../data/site";
+
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+const c = content[locale];
+const t = ui[locale];
+const h = c.home;
+---
+<BaseLayout locale={locale} route="home" title={c.meta.home.title} description={c.meta.home.desc}>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="container hero-inner">
+      <div class="hero-copy">
+        <span class="eyebrow reveal">{h.hero.eyebrow}</span>
+        <h1 class="display reveal">{h.hero.title}</h1>
+        <p class="body-lg hero-lead reveal">{h.hero.lead}</p>
+        <div class="btn-row reveal">
+          <a class="btn btn--gold" href={path(locale, "contact")}>{t.primaryCta}</a>
+          <a class="btn btn--ghost-light" href={path(locale, "products")}>
+            {locale === "ar" ? "استعرض منتجات جديل" : "Explore Jadeel products"}
+          </a>
+        </div>
+        <ul class="hero-stats reveal">
+          {h.hero.stats.map((s) => (
+            <li><span class="stat-n">{s.n}</span><span class="stat-l">{s.label}</span></li>
+          ))}
+        </ul>
+      </div>
+      <div class="hero-mark reveal" aria-hidden="true">
+        <img src={asset("/logo/mark-white.png")} alt="" />
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY -->
+  <section class="section">
+    <div class="container">
+      <div class="grid why-grid">
+        <div class="section-head why-intro">
+          <span class="eyebrow">{h.why.eyebrow}</span>
+          <h2>{h.why.title}</h2>
+          <p>{h.why.text}</p>
+        </div>
+        <div class="grid why-points">
+          {h.why.points.map((p) => (
+            <div class="why-point reveal">
+              <span class="card-icon"><Icon name={p.icon} /></span>
+              <div><h3>{p.title}</h3><p>{p.text}</p></div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="section section--soft">
+    <div class="container">
+      <div class="section-head center">
+        <span class="eyebrow">{h.services.eyebrow}</span>
+        <h2>{h.services.title}</h2>
+      </div>
+      <div class="grid grid-4">
+        {h.services.items.map((s) => (
+          <FeatureCard icon={s.icon} title={s.title} text={s.text} />
+        ))}
+      </div>
+      <div class="text-center sec-cta">
+        <a class="btn btn--ghost" href={path(locale, "services")}>{t.learnMore}</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head center">
+        <span class="eyebrow">{h.products.eyebrow}</span>
+        <h2>{h.products.title}</h2>
+        <p>{h.products.text}</p>
+      </div>
+      <div class="grid grid-4 products-mini">
+        {c.products.list.map((p) => (
+          <a class="card prod-mini reveal" href={`${path(locale, "products")}#${p.slug}`}>
+            <span class="card-icon"><Icon name={p.icon} /></span>
+            {p.featured && <span class="badge badge--featured prod-flag">{locale === "ar" ? "مميز" : "Featured"}</span>}
+            <h3>{p.name}</h3>
+            <p>{p.summary}</p>
+          </a>
+        ))}
+        <a class="card prod-all reveal" href={path(locale, "products")}>
+          <span>{locale === "ar" ? "كل المنتجات" : "All products"}</span>
+          <Icon name="arrow-left" size={22} class="prod-all-arrow" />
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- METHODOLOGY -->
+  <section class="section section--navy">
+    <div class="container">
+      <div class="section-head center">
+        <span class="eyebrow">{h.methodology.eyebrow}</span>
+        <h2>{h.methodology.title}</h2>
+      </div>
+      <ol class="method-strip">
+        {h.methodology.steps.map((s) => (
+          <li class="method-step reveal">
+            <span class="ms-icon"><Icon name={s.icon} /></span>
+            <span class="ms-n">{s.n}</span>
+            <h3>{s.title}</h3>
+            <p>{s.text}</p>
+          </li>
+        ))}
+      </ol>
+      <div class="text-center sec-cta">
+        <a class="btn btn--gold" href={path(locale, "methodology")}>{t.learnMore}</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- AUDIENCE -->
+  <section class="section section--soft">
+    <div class="container">
+      <div class="section-head center">
+        <span class="eyebrow">{h.audience.eyebrow}</span>
+        <h2>{h.audience.title}</h2>
+      </div>
+      <div class="grid grid-3">
+        {h.audience.items.map((a) => (
+          <div class="aud-card reveal">
+            <span class="card-icon"><Icon name={a.icon} /></span>
+            <div><h3>{a.title}</h3><p>{a.text}</p></div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CASE FEATURE -->
+  <section class="section">
+    <div class="container">
+      <div class="case-feature reveal">
+        <div class="cf-copy">
+          <span class="eyebrow">{h.caseFeature.eyebrow}</span>
+          <h2>{h.caseFeature.title}</h2>
+          <p>{h.caseFeature.text}</p>
+          <a class="btn btn--ghost" href={path(locale, "cases")}>{h.caseFeature.cta}</a>
+        </div>
+        <div class="cf-visual" aria-hidden="true">
+          <img src={asset("/logo/mark-color.png")} alt="" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTABand locale={locale} title={h.finalCta.title} text={h.finalCta.text} />
+</BaseLayout>
+
+<style>
+  /* HERO */
+  .hero { position: relative; overflow: hidden; color: #e9f0fb; }
+  .hero-bg {
+    position: absolute; inset: 0; z-index: 0;
+    background: radial-gradient(120% 120% at 85% 0%, var(--navy-600), var(--navy) 45%, var(--navy-900) 100%);
+  }
+  .hero-bg::after {
+    content: ""; position: absolute; inset: 0;
+    background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.06) 1px, transparent 0);
+    background-size: 28px 28px; opacity: 0.6;
+  }
+  .hero-inner {
+    position: relative; z-index: 2;
+    display: grid; grid-template-columns: 1.35fr 0.65fr; align-items: center; gap: var(--s7);
+    padding-block: clamp(56px, 9vw, 120px);
+  }
+  .hero .eyebrow { color: var(--gold); margin-bottom: var(--s4); }
+  .hero h1 { color: #fff; max-width: 16ch; }
+  .hero-lead { margin-top: var(--s5); color: #c6d3e6; max-width: 56ch; }
+  .hero .btn-row { margin-top: var(--s6); }
+  .hero-stats {
+    display: flex; gap: var(--s7); margin-top: var(--s7); flex-wrap: wrap;
+    padding-top: var(--s6); border-top: 1px solid rgba(255,255,255,0.12);
+  }
+  .stat-n { display: block; font-family: var(--font-display); font-weight: 700; font-size: 2.4rem; color: var(--gold); line-height: 1; }
+  .stat-l { display: block; font-size: 0.88rem; color: #aebfd6; margin-top: 6px; max-width: 14ch; }
+  .hero-mark { display: flex; justify-content: center; }
+  .hero-mark img { width: min(280px, 70%); opacity: 0.92; filter: drop-shadow(0 20px 50px rgba(0,0,0,0.35)); animation: float 7s ease-in-out infinite; }
+  @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+  @media (prefers-reduced-motion: reduce) { .hero-mark img { animation: none; } }
+  @media (max-width: 900px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-mark { display: none; }
+  }
+
+  /* WHY */
+  .why-grid { grid-template-columns: 0.9fr 1.1fr; gap: var(--s8); align-items: start; }
+  .why-intro { margin-bottom: 0; }
+  .why-points { gap: var(--s4); }
+  .why-point { display: flex; gap: var(--s4); align-items: flex-start; background: var(--white); border: 1px solid var(--border); border-radius: var(--r-card); padding: var(--s5); box-shadow: var(--shadow-sm); }
+  .why-point .card-icon { margin-bottom: 0; flex-shrink: 0; }
+  .why-point h3 { font-size: 1.1rem; margin-bottom: 4px; }
+  .why-point p { color: var(--text-muted); font-size: 0.95rem; }
+  @media (max-width: 860px) { .why-grid { grid-template-columns: 1fr; gap: var(--s6); } }
+
+  .sec-cta { margin-top: var(--s7); }
+
+  /* PRODUCTS mini */
+  .prod-mini { position: relative; display: flex; flex-direction: column; }
+  .prod-mini h3 { font-size: 1.1rem; }
+  .prod-flag { position: absolute; inset-inline-end: var(--s4); top: var(--s4); }
+  .prod-all {
+    display: flex; align-items: center; justify-content: center; gap: var(--s3);
+    background: var(--navy); color: #fff; border: 0; font-weight: 600; font-size: 1.05rem;
+  }
+  .prod-all:hover { background: var(--navy-900); transform: translateY(-3px); }
+  :global(:root[dir="ltr"]) .prod-all-arrow { transform: scaleX(-1); }
+
+  /* METHOD strip */
+  .method-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--s5); counter-reset: step; }
+  .method-step { position: relative; padding: var(--s5); border-radius: var(--r-card); background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.09); }
+  .ms-icon { display: inline-flex; align-items: center; justify-content: center; width: 50px; height: 50px; border-radius: 12px; background: rgba(190,140,58,0.16); color: var(--gold); margin-bottom: var(--s4); }
+  .ms-n { position: absolute; inset-inline-end: var(--s5); top: var(--s5); font-family: var(--font-display); font-weight: 700; color: rgba(255,255,255,0.18); font-size: 1.6rem; }
+  .method-step h3 { color: #fff; font-size: 1.15rem; margin-bottom: 6px; }
+  .method-step p { color: #b9c6da; font-size: 0.92rem; }
+  @media (max-width: 900px) { .method-strip { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 520px) { .method-strip { grid-template-columns: 1fr; } }
+
+  /* AUDIENCE */
+  .aud-card { display: flex; gap: var(--s4); align-items: flex-start; background: var(--white); border: 1px solid var(--border); border-radius: var(--r-card); padding: var(--s5); box-shadow: var(--shadow-sm); transition: transform 0.18s ease, box-shadow 0.18s ease; }
+  .aud-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+  .aud-card .card-icon { margin-bottom: 0; flex-shrink: 0; background: var(--green-050); color: var(--green-700); }
+  .aud-card h3 { font-size: 1.05rem; margin-bottom: 2px; }
+  .aud-card p { color: var(--text-muted); font-size: 0.92rem; }
+
+  /* CASE FEATURE */
+  .case-feature { display: grid; grid-template-columns: 1.3fr 0.7fr; gap: var(--s7); align-items: center; background: var(--navy-050); border: 1px solid var(--navy-100); border-radius: var(--r-panel); padding: clamp(28px, 5vw, 56px); }
+  .cf-copy p { margin-block: var(--s4) var(--s5); color: var(--text-muted); max-width: 54ch; }
+  .cf-visual { display: flex; justify-content: center; }
+  .cf-visual img { width: min(220px, 70%); }
+  @media (max-width: 800px) { .case-feature { grid-template-columns: 1fr; } .cf-visual { display: none; } }
+</style>

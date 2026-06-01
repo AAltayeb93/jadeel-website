@@ -1,0 +1,40 @@
+---
+// Navy hero band for inner pages. The braid mark sits as a watermark.
+import { asset } from "../i18n";
+interface Props { eyebrow: string; title: string; lead?: string; }
+const { eyebrow, title, lead } = Astro.props;
+---
+<section class="page-hero">
+  <div class="ph-deco" aria-hidden="true">
+    <img src={asset("/logo/mark-white.png")} alt="" />
+  </div>
+  <div class="container ph-inner">
+    <span class="eyebrow reveal">{eyebrow}</span>
+    <h1 class="display reveal">{title}</h1>
+    {lead && <p class="body-lg ph-lead reveal">{lead}</p>}
+  </div>
+</section>
+
+<style>
+  .page-hero {
+    position: relative; overflow: hidden;
+    background: linear-gradient(160deg, var(--navy-800), var(--navy) 55%, var(--navy-900));
+    color: #e7eefa;
+    padding-block: clamp(56px, 9vw, 110px);
+  }
+  .page-hero::after {
+    content: ""; position: absolute; inset: 0;
+    background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.05) 1px, transparent 0);
+    background-size: 26px 26px; opacity: 0.5; pointer-events: none;
+  }
+  .ph-inner { position: relative; z-index: 2; max-width: 860px; }
+  .ph-inner .eyebrow { color: var(--gold); margin-bottom: var(--s4); }
+  .ph-inner h1 { color: #fff; }
+  .ph-lead { margin-top: var(--s5); color: #c4d1e4; max-width: 720px; }
+  .ph-deco {
+    position: absolute; z-index: 1; top: 50%; inset-inline-end: -40px; transform: translateY(-50%);
+    width: min(420px, 42vw); opacity: 0.06; pointer-events: none;
+  }
+  .ph-deco img { width: 100%; }
+  @media (max-width: 700px) { .ph-deco { inset-inline-end: -80px; width: 320px; } }
+</style>

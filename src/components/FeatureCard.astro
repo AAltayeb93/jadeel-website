@@ -1,0 +1,34 @@
+---
+import Icon from "./Icon.astro";
+// Generic icon card. variant: default | gold | green. Optional number badge & href.
+interface Props {
+  icon: string; title: string; text?: string;
+  variant?: "default" | "gold" | "green";
+  n?: string; href?: string;
+}
+const { icon, title, text, variant = "default", n, href } = Astro.props;
+const Tag = href ? "a" : "div";
+---
+<Tag class:list={["card feature-card reveal", `card--${variant}`, { "is-link": href }]} href={href}>
+  <div class="fc-top">
+    <span class="card-icon"><Icon name={icon} /></span>
+    {n && <span class="fc-num">{n}</span>}
+  </div>
+  <h3>{title}</h3>
+  {text && <p>{text}</p>}
+  {href && <span class="fc-arrow" aria-hidden="true"><Icon name="arrow-left" size={18} /></span>}
+</Tag>
+
+<style>
+  .feature-card { display: flex; flex-direction: column; position: relative; }
+  .fc-top { display: flex; align-items: center; justify-content: space-between; }
+  .fc-num { font-family: var(--font-display); font-weight: 700; font-size: 1.5rem; color: var(--gold); opacity: 0.85; }
+  .feature-card h3 { color: var(--navy); }
+  .is-link .fc-arrow {
+    margin-top: auto; padding-top: var(--s4); color: var(--green-700);
+    display: inline-flex; transition: transform 0.15s ease;
+  }
+  :global(:root[dir="ltr"]) .is-link .fc-arrow :global(svg) { transform: scaleX(-1); }
+  .is-link:hover .fc-arrow { transform: translateX(-4px); }
+  :global(:root[dir="ltr"]) .is-link:hover .fc-arrow { transform: translateX(4px); }
+</style>
