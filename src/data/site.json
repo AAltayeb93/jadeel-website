@@ -17,15 +17,15 @@
     }
   },
   "contactInfo": {
-    "email": "hello@jadeel.sa",
-    "phone": "+966 ",
+    "email": "info@jadeel.sa",
+    "phone": "+966 568003777",
     "phoneDisplay": {
-      "ar": "يُحدّد لاحقًا",
-      "en": "Coming soon"
+      "ar": "011 4007646",
+      "en": "011 4007646"
     },
     "city": {
       "ar": "المملكة العربية السعودية",
-      "en": "Kingdom of Saudi Arabia"
+      "en": "Saudi Arabia"
     },
     "social": [
       {
