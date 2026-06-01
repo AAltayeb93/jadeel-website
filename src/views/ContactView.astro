@@ -4,12 +4,13 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import PageHero from "../components/PageHero.astro";
 import Icon from "../components/Icon.astro";
 import { content } from "../data/content";
-import { ui, contactInfo } from "../data/site";
+import { ui, contactInfo, forms, brand } from "../data/site";
 
 interface Props { locale: Locale; }
 const { locale } = Astro.props;
 const c = content[locale];
 const t = ui[locale];
+const web3formsKey = forms.web3formsKey || "";
 const ct = c.contact;
 const f = ct.form;
 ---
@@ -46,7 +47,12 @@ const f = ct.form;
 
       <!-- Form -->
       <div class="contact-form-wrap reveal">
-        <form class="contact-form" data-contact-form>
+        <form class="contact-form" data-contact-form data-key={web3formsKey} data-email={contactInfo.email}>
+          <input type="hidden" name="access_key" value={web3formsKey} />
+          <input type="hidden" name="subject" value={locale === "ar" ? "طلب جديد من موقع جديل" : "New request from Jadeel website"} />
+          <input type="hidden" name="from_name" value={brand.fullName[locale]} />
+          <!-- honeypot: bots fill this, humans don't -->
+          <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off" />
           <p class="form-hint">{t.requiredHint}</p>
           <div class="form-row">
             <div class="field">
@@ -128,11 +134,48 @@ const f = ct.form;
 <script>
   const form = document.querySelector("[data-contact-form]") as HTMLFormElement | null;
   const success = document.querySelector("[data-success]") as HTMLElement | null;
-  form?.addEventListener("submit", (e) => {
+  const btn = form?.querySelector(".form-submit") as HTMLButtonElement | null;
+  const isAr = document.documentElement.lang === "ar";
+
+  form?.addEventListener("submit", async (e) => {
     e.preventDefault();
     if (!form.checkValidity()) { form.reportValidity(); return; }
-    // No backend yet — show confirmation. Wire to an endpoint/email service later.
-    form.querySelectorAll("input,select,textarea,button").forEach((el) => ((el as HTMLInputElement).disabled = true));
-    success?.removeAttribute("hidden");
+
+    const key = form.getAttribute("data-key") || "";
+    if (!key || key.startsWith("REPLACE_")) {
+      // Fallback before the email key is configured: open the visitor's mail client.
+      const email = form.getAttribute("data-email") || "";
+      const g = (n: string) => (form.querySelector(`[name="${n}"]`) as HTMLInputElement | null)?.value || "";
+      const subject = encodeURIComponent(isAr ? "طلب من موقع جديل" : "Request from Jadeel website");
+      const body = encodeURIComponent(
+        `${g("org")} — ${g("person")}\n${g("email")}\n${g("service")} / ${g("entityType")}\n\n${g("message")}`
+      );
+      window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
+      return;
+    }
+
+    const original = btn?.textContent || "";
+    if (btn) { btn.disabled = true; btn.textContent = isAr ? "جارٍ الإرسال…" : "Sending…"; }
+
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: new FormData(form),
+      });
+      const data = await res.json();
+      if (res.ok && data.success) {
+        form.querySelectorAll("input,select,textarea,button").forEach((el) => ((el as HTMLInputElement).disabled = true));
+        success?.removeAttribute("hidden");
+        success?.scrollIntoView({ behavior: "smooth", block: "center" });
+      } else {
+        throw new Error(data.message || "submit failed");
+      }
+    } catch (err) {
+      if (btn) { btn.disabled = false; btn.textContent = original; }
+      alert(isAr
+        ? "تعذّر إرسال الطلب. تحقّق من اتصال الإنترنت وحاول مرة أخرى."
+        : "Couldn't send your request. Please check your connection and try again.");
+    }
   });
 </script>

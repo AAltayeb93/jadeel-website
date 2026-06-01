@@ -15,3 +15,4 @@ export const contactInfo = siteData.contactInfo as {
 };
 export const nav = siteData.nav as unknown as Record<Locale, NavItem[]>;
 export const ui = siteData.ui as unknown as Record<Locale, Record<string, string>>;
+export const forms = (siteData as { forms?: { web3formsKey?: string } }).forms ?? { web3formsKey: "" };
