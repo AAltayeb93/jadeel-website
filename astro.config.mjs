@@ -8,8 +8,8 @@ import { defineConfig } from 'astro/config';
 //   site = 'https://USERNAME.github.io'   base = '/REPO'
 // When using a custom domain (e.g. jadeel.sa) set:  site = 'https://jadeel.sa'  base = '/'
 // Override without editing this file via env vars, e.g.  SITE=... BASE=... npm run build
-// Local dev/build default to root ("/"); the GitHub Pages workflow sets SITE/BASE.
-const SITE = process.env.SITE || 'https://USERNAME.github.io';
+// Served from the custom domain jadeel.sa at the root, so BASE = "/".
+const SITE = process.env.SITE || 'https://jadeel.sa';
 const BASE = process.env.BASE || '/';
 
 export default defineConfig({

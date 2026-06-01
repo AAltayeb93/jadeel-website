@@ -25,9 +25,9 @@ jobs:
         uses: withastro/action@v3
         # Builds with npm and uploads ./dist as the Pages artifact automatically.
         env:
-          # Hosted at https://USERNAME.github.io/REPO/ — update these two values:
-          SITE: https://USERNAME.github.io
-          BASE: /REPO
+          # Served from the custom domain at the root.
+          SITE: https://jadeel.sa
+          BASE: /
 
   deploy:
     needs: build
